@@ -1,0 +1,10 @@
+C:\Users\sblur\Dropbox\c#\Pacman\Pacman\bin\Debug\Pacman.exe.config
+C:\Users\sblur\Dropbox\c#\Pacman\Pacman\bin\Debug\Pacman.exe
+C:\Users\sblur\Dropbox\c#\Pacman\Pacman\bin\Debug\Pacman.pdb
+C:\Users\sblur\Dropbox\c#\Pacman\Pacman\obj\Debug\Pacman.csprojAssemblyReference.cache
+C:\Users\sblur\Dropbox\c#\Pacman\Pacman\obj\Debug\Pacman.Form1.resources
+C:\Users\sblur\Dropbox\c#\Pacman\Pacman\obj\Debug\Pacman.Properties.Resources.resources
+C:\Users\sblur\Dropbox\c#\Pacman\Pacman\obj\Debug\Pacman.csproj.GenerateResource.cache
+C:\Users\sblur\Dropbox\c#\Pacman\Pacman\obj\Debug\Pacman.csproj.CoreCompileInputs.cache
+C:\Users\sblur\Dropbox\c#\Pacman\Pacman\obj\Debug\Pacman.exe
+C:\Users\sblur\Dropbox\c#\Pacman\Pacman\obj\Debug\Pacman.pdb

@@ -16,8 +16,8 @@ namespace Pacman
 
         public void mkCoin(Form form)
         {
-            coin.BackColor = Color.Yellow;
-            coin.Size = new Size(2, 2);
+            coin.BackColor = Color.White;
+            coin.Size = new Size (3, 3);
             coin.Tag = "coin";
             coin.Left = coinLeft;
             coin.Top = coinTop;
@@ -28,7 +28,7 @@ namespace Pacman
         public void mkBig(Form form)
         {
             coin.BackColor = Color.Yellow;
-            coin.Size = new Size(5, 5);
+            coin.Size = new Size(10, 10);
             coin.Tag = "big";
             coin.Left = coinLeft;
             coin.Top = coinTop;

@@ -469,6 +469,24 @@ namespace Pacman
                 EStart= 270, EStop= 310, FStart = 270, FStop = 360,
                 GStart = 370, GStop = 430;
 
+            Circles bigOne1 = new Circles();
+            bigOne1.coinLeft =31;
+            bigOne1.coinTop = Y[7]-10;
+            bigOne1.mkBig(this);
+            Circles bigOne2 = new Circles();
+            bigOne2.coinLeft = 31;
+            bigOne2.coinTop = 55;
+            bigOne2.mkBig(this);
+            Circles bigOne3 = new Circles();
+            bigOne3.coinLeft = 426;
+            bigOne3.coinTop = Y[7] -10;
+            bigOne3.mkBig(this);
+            Circles bigOne4 = new Circles();
+            bigOne4.coinLeft = 426;
+            bigOne4.coinTop = 55;
+            bigOne4.mkBig(this);
+
+
             //row 0
             for (int i = AStart; i < AStop; i+=spacing)
             {
@@ -801,33 +819,76 @@ namespace Pacman
 
         #region player colecting points
 
+        int coinCount = 0;
+        bool youWin = false;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if ((player.Image != Properties.Resources.PlayerR) && Settings.playerDirection == Directions.Right)
-                player.Image = Properties.Resources.PlayerR;
-            else if ((player.Image != Properties.Resources.PlayerL) && Settings.playerDirection == Directions.Left)
-                player.Image = Properties.Resources.PlayerL;
-            else if ((player.Image != Properties.Resources.PlayerU) && Settings.playerDirection == Directions.Up)
-                player.Image = Properties.Resources.PlayerU;
-            else if ((player.Image != Properties.Resources.PlayerD) && Settings.playerDirection == Directions.Down)
-                player.Image = Properties.Resources.PlayerD;
-            
+            if (!youWin)
+            {
 
-            lbScore.Text = "Score:\n"  + score;
+                if ((player.Image != Properties.Resources.PlayerR) && Settings.playerDirection == Directions.Right)
+                    player.Image = Properties.Resources.PlayerR;
+                else if ((player.Image != Properties.Resources.PlayerL) && Settings.playerDirection == Directions.Left)
+                    player.Image = Properties.Resources.PlayerL;
+                else if ((player.Image != Properties.Resources.PlayerU) && Settings.playerDirection == Directions.Up)
+                    player.Image = Properties.Resources.PlayerU;
+                else if ((player.Image != Properties.Resources.PlayerD) && Settings.playerDirection == Directions.Down)
+                    player.Image = Properties.Resources.PlayerD;
 
-            //inside the second loop adding j verible to controls
-            foreach (Control j in this.Controls)
-            {//to identify coins to collect
-                if ((j is PictureBox && j.Tag == "coin"))
-                {
-                    if (player.Bounds.IntersectsWith(j.Bounds))
+
+                lbScore.Text = "Score:\n" + score;
+
+                //inside the second loop adding j verible to controls
+                foreach (Control j in this.Controls)
+                {//to identify coins to collect
+                    if ((j is PictureBox && j.Tag == "coin"))
                     {
-                        score+= 10;
-                        this.Controls.Remove(j);
-                        j.Dispose();
+                        if (player.Bounds.IntersectsWith(j.Bounds))
+                        {
+                            coinCount++;
+                            score += 10;
+                            this.Controls.Remove(j);
+                            j.Dispose();
+                            if (coinCount == 254)
+                                youWin = true;
+                        }
                     }
                 }
+
             }
+            if (youWin)
+            {
+                YouWin();
+            }
+
+        }
+
+        private void YouWin()
+        {
+
+        }
+
+        #endregion
+
+        #region ghoast timers
+
+        private void ghostTimer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ghostTimer2_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ghostTimer3_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ghostTimer4_Tick(object sender, EventArgs e)
+        {
 
         }
 

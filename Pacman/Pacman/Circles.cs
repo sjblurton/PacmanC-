@@ -27,7 +27,8 @@ namespace Pacman
         }
         public void mkBig(Form form)
         {
-            coin.BackColor = Color.Yellow;
+            coin.BackColor = Color.Transparent;
+            coin.Image = Properties.Resources.ball;
             coin.Size = new Size(10, 10);
             coin.Tag = "big";
             coin.Left = coinLeft;

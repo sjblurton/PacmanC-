@@ -42,6 +42,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.ghostTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.ghostTimer2 = new System.Windows.Forms.Timer(this.components);
+            this.ghostTimer3 = new System.Windows.Forms.Timer(this.components);
+            this.ghostTimer4 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -62,28 +66,28 @@
             // 
             // playTimerR
             // 
-            this.playTimerR.Interval = 5;
+            this.playTimerR.Interval = 1;
             this.playTimerR.Tick += new System.EventHandler(this.playTmerR_Tick);
             // 
             // playTimerL
             // 
-            this.playTimerL.Interval = 5;
+            this.playTimerL.Interval = 1;
             this.playTimerL.Tick += new System.EventHandler(this.playTimerL_Tick);
             // 
             // playTimerU
             // 
-            this.playTimerU.Interval = 5;
+            this.playTimerU.Interval = 1;
             this.playTimerU.Tick += new System.EventHandler(this.playTimerU_Tick);
             // 
             // playTimerD
             // 
-            this.playTimerD.Interval = 5;
+            this.playTimerD.Interval = 1;
             this.playTimerD.Tick += new System.EventHandler(this.playTimerD_Tick);
             // 
             // findPlayerEngineTimer
             // 
             this.findPlayerEngineTimer.Enabled = true;
-            this.findPlayerEngineTimer.Interval = 5;
+            this.findPlayerEngineTimer.Interval = 1;
             this.findPlayerEngineTimer.Tick += new System.EventHandler(this.gameEngineTimer_Tick);
             // 
             // collectingPoints
@@ -107,7 +111,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Pacman.Properties.Resources.G3D;
-            this.pictureBox1.Location = new System.Drawing.Point(261, 233);
+            this.pictureBox1.Location = new System.Drawing.Point(240, 233);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(18, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -117,7 +121,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Pacman.Properties.Resources.G1D;
-            this.pictureBox2.Location = new System.Drawing.Point(217, 233);
+            this.pictureBox2.Location = new System.Drawing.Point(264, 233);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(18, 20);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -127,7 +131,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Pacman.Properties.Resources.G2D;
-            this.pictureBox3.Location = new System.Drawing.Point(239, 233);
+            this.pictureBox3.Location = new System.Drawing.Point(192, 233);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(18, 20);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -137,12 +141,28 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Pacman.Properties.Resources.G4D;
-            this.pictureBox4.Location = new System.Drawing.Point(195, 233);
+            this.pictureBox4.Location = new System.Drawing.Point(216, 233);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(18, 20);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
+            // 
+            // ghostTimer1
+            // 
+            this.ghostTimer1.Tick += new System.EventHandler(this.ghostTimer1_Tick);
+            // 
+            // ghostTimer2
+            // 
+            this.ghostTimer2.Tick += new System.EventHandler(this.ghostTimer2_Tick);
+            // 
+            // ghostTimer3
+            // 
+            this.ghostTimer3.Tick += new System.EventHandler(this.ghostTimer3_Tick);
+            // 
+            // ghostTimer4
+            // 
+            this.ghostTimer4.Tick += new System.EventHandler(this.ghostTimer4_Tick);
             // 
             // Form1
             // 
@@ -190,6 +210,10 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Timer ghostTimer1;
+        private System.Windows.Forms.Timer ghostTimer2;
+        private System.Windows.Forms.Timer ghostTimer3;
+        private System.Windows.Forms.Timer ghostTimer4;
     }
 }
 

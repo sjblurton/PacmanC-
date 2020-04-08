@@ -38,25 +38,21 @@
             this.findPlayerEngineTimer = new System.Windows.Forms.Timer(this.components);
             this.collectingPoints = new System.Windows.Forms.Timer(this.components);
             this.lbScore = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.ghostTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.ghostTimer2 = new System.Windows.Forms.Timer(this.components);
-            this.ghostTimer3 = new System.Windows.Forms.Timer(this.components);
-            this.ghostTimer4 = new System.Windows.Forms.Timer(this.components);
+            this.pbGhostRed = new System.Windows.Forms.PictureBox();
+            this.redTimer = new System.Windows.Forms.Timer(this.components);
+            this.redMovmentTimer = new System.Windows.Forms.Timer(this.components);
+            this.pbGhostPink = new System.Windows.Forms.PictureBox();
+            this.pinkTimer = new System.Windows.Forms.Timer(this.components);
+            this.pinkMovmentTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGhostRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGhostPink)).BeginInit();
             this.SuspendLayout();
             // 
             // player
             // 
             this.player.BackColor = System.Drawing.Color.Transparent;
-            this.player.Image = global::Pacman.Properties.Resources.PlayerL;
+            this.player.Image = ((System.Drawing.Image)(resources.GetObject("player.Image")));
             this.player.Location = new System.Drawing.Point(225, 375);
             this.player.Name = "player";
             this.player.Size = new System.Drawing.Size(22, 22);
@@ -108,74 +104,60 @@
             this.lbScore.TabIndex = 1;
             this.lbScore.Text = "Score:";
             // 
-            // pictureBox1
+            // pbGhostRed
             // 
-            this.pictureBox1.Image = global::Pacman.Properties.Resources.G3D;
-            this.pictureBox1.Location = new System.Drawing.Point(240, 233);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(18, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pbGhostRed.Image = global::Pacman.Properties.Resources.GRD;
+            this.pbGhostRed.Location = new System.Drawing.Point(240, 230);
+            this.pbGhostRed.Name = "pbGhostRed";
+            this.pbGhostRed.Size = new System.Drawing.Size(18, 20);
+            this.pbGhostRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbGhostRed.TabIndex = 2;
+            this.pbGhostRed.TabStop = false;
             // 
-            // pictureBox2
+            // redTimer
             // 
-            this.pictureBox2.Image = global::Pacman.Properties.Resources.G1D;
-            this.pictureBox2.Location = new System.Drawing.Point(264, 233);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(18, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.redTimer.Enabled = true;
+            this.redTimer.Interval = 25;
+            this.redTimer.Tick += new System.EventHandler(this.redTimer_Tick);
             // 
-            // pictureBox3
+            // redMovmentTimer
             // 
-            this.pictureBox3.Image = global::Pacman.Properties.Resources.G2D;
-            this.pictureBox3.Location = new System.Drawing.Point(192, 233);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(18, 20);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
+            this.redMovmentTimer.Enabled = true;
+            this.redMovmentTimer.Interval = 25;
+            this.redMovmentTimer.Tick += new System.EventHandler(this.redMovmenTimer_Tick);
             // 
-            // pictureBox4
+            // pbGhostPink
             // 
-            this.pictureBox4.Image = global::Pacman.Properties.Resources.G4D;
-            this.pictureBox4.Location = new System.Drawing.Point(216, 233);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(18, 20);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox4.TabIndex = 5;
-            this.pictureBox4.TabStop = false;
+            this.pbGhostPink.Image = global::Pacman.Properties.Resources.GPD;
+            this.pbGhostPink.Location = new System.Drawing.Point(215, 230);
+            this.pbGhostPink.Name = "pbGhostPink";
+            this.pbGhostPink.Size = new System.Drawing.Size(18, 20);
+            this.pbGhostPink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbGhostPink.TabIndex = 3;
+            this.pbGhostPink.TabStop = false;
             // 
-            // ghostTimer1
+            // pinkTimer
             // 
-            this.ghostTimer1.Tick += new System.EventHandler(this.ghostTimer1_Tick);
+            this.pinkTimer.Enabled = true;
+            this.pinkTimer.Interval = 25;
+            this.pinkTimer.Tick += new System.EventHandler(this.pinkTimer_Tick);
             // 
-            // ghostTimer2
+            // pinkMovmentTimer
             // 
-            this.ghostTimer2.Tick += new System.EventHandler(this.ghostTimer2_Tick);
-            // 
-            // ghostTimer3
-            // 
-            this.ghostTimer3.Tick += new System.EventHandler(this.ghostTimer3_Tick);
-            // 
-            // ghostTimer4
-            // 
-            this.ghostTimer4.Tick += new System.EventHandler(this.ghostTimer4_Tick);
+            this.pinkMovmentTimer.Enabled = true;
+            this.pinkMovmentTimer.Interval = 25;
+            this.pinkMovmentTimer.Tick += new System.EventHandler(this.pinkMovmentTimer_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = global::Pacman.Properties.Resources.Maze;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(470, 514);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbGhostPink);
+            this.Controls.Add(this.pbGhostRed);
             this.Controls.Add(this.lbScore);
             this.Controls.Add(this.player);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -187,10 +169,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyIsUp);
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGhostRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGhostPink)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,14 +186,12 @@
         private System.Windows.Forms.Timer findPlayerEngineTimer;
         private System.Windows.Forms.Timer collectingPoints;
         private System.Windows.Forms.Label lbScore;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Timer ghostTimer1;
-        private System.Windows.Forms.Timer ghostTimer2;
-        private System.Windows.Forms.Timer ghostTimer3;
-        private System.Windows.Forms.Timer ghostTimer4;
+        private System.Windows.Forms.PictureBox pbGhostRed;
+        private System.Windows.Forms.Timer redTimer;
+        private System.Windows.Forms.Timer redMovmentTimer;
+        private System.Windows.Forms.PictureBox pbGhostPink;
+        private System.Windows.Forms.Timer pinkTimer;
+        private System.Windows.Forms.Timer pinkMovmentTimer;
     }
 }
 

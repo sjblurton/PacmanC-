@@ -118,100 +118,100 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="G2U" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G2U.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G2D" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G2D.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G1U" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G1U.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Maze" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Maze.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G2L" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G2L.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G3D" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G3D.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G4D" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G4D.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G1D" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G1D.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SPUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SPUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PSRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PSRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DGhostU" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DGhostU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PSDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PSDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G3U" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G3U.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G4U" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G4U.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PlayerR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlayerR.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DGhostD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DGhostD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G3L" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G3L.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PlayerL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlayerL.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G1R" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G1R.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G2R" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G2R.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G1L" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G1L.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DGhostL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DGhostL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PlayerD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlayerD.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DGhostR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DGhostR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PSLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PSLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G4R" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G4R.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PlayerU" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlayerU.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="G4L" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G4L.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gtemp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gtemp.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ball" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ball.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="crazy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crazy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="G3R" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\G3R.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DGhostD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DGhostD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ball" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ball.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DGhostL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DGhostL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DGhostR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DGhostR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DGhostU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DGhostU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GBD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GBD.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GBL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GBL.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GBR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GBR.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GBU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GBU.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GOD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GOD.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GOL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GOL.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GOR.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GOU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GOU.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GPD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GPD.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GPL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GPL.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GPR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GPR.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GPU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GPU.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GRD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GRD.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GRL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GRL.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GRR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GRR.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GRU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GRU.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gtemp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gtemp.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Maze" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Maze.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayerD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayerD.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayerL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayerL.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayerR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayerR.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayerU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayerU.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PSDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PSDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PSLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PSLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PSRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PSRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SPUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SPUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -19,19 +19,14 @@ namespace Pacman
     {
 
         public static Directions playerDirection { get; set; }
-        public static Directions ghost1Direction { get; set; }
-        public static Directions ghost2Direction { get; set; }
-        public static Directions ghost3Direction { get; set; }
-        public static Directions ghost4Direction { get; set; }
+        public static Directions GhostRedDirection { get; set; }
+        public static Directions GhostPinkDirection { get; set; }
+        public static Directions GhostOrangeDirection { get; set; }
+        public static Directions GhostBlueDirection { get; set; }
 
         public Settings()
         {
             //default settings
-            ghost1Direction = Directions.Stop;
-            ghost2Direction = Directions.Stop;
-            ghost3Direction = Directions.Stop;
-            ghost4Direction = Directions.Stop;
-
         }
 
     }

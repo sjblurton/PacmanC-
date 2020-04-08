@@ -123,9 +123,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G1D {
+        internal static System.Drawing.Bitmap GBD {
             get {
-                object obj = ResourceManager.GetObject("G1D", resourceCulture);
+                object obj = ResourceManager.GetObject("GBD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G1L {
+        internal static System.Drawing.Bitmap GBL {
             get {
-                object obj = ResourceManager.GetObject("G1L", resourceCulture);
+                object obj = ResourceManager.GetObject("GBL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G1R {
+        internal static System.Drawing.Bitmap GBR {
             get {
-                object obj = ResourceManager.GetObject("G1R", resourceCulture);
+                object obj = ResourceManager.GetObject("GBR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G1U {
+        internal static System.Drawing.Bitmap GBU {
             get {
-                object obj = ResourceManager.GetObject("G1U", resourceCulture);
+                object obj = ResourceManager.GetObject("GBU", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G2D {
+        internal static System.Drawing.Bitmap GOD {
             get {
-                object obj = ResourceManager.GetObject("G2D", resourceCulture);
+                object obj = ResourceManager.GetObject("GOD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G2L {
+        internal static System.Drawing.Bitmap GOL {
             get {
-                object obj = ResourceManager.GetObject("G2L", resourceCulture);
+                object obj = ResourceManager.GetObject("GOL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G2R {
+        internal static System.Drawing.Bitmap GOR {
             get {
-                object obj = ResourceManager.GetObject("G2R", resourceCulture);
+                object obj = ResourceManager.GetObject("GOR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G2U {
+        internal static System.Drawing.Bitmap GOU {
             get {
-                object obj = ResourceManager.GetObject("G2U", resourceCulture);
+                object obj = ResourceManager.GetObject("GOU", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G3D {
+        internal static System.Drawing.Bitmap GPD {
             get {
-                object obj = ResourceManager.GetObject("G3D", resourceCulture);
+                object obj = ResourceManager.GetObject("GPD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G3L {
+        internal static System.Drawing.Bitmap GPL {
             get {
-                object obj = ResourceManager.GetObject("G3L", resourceCulture);
+                object obj = ResourceManager.GetObject("GPL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G3R {
+        internal static System.Drawing.Bitmap GPR {
             get {
-                object obj = ResourceManager.GetObject("G3R", resourceCulture);
+                object obj = ResourceManager.GetObject("GPR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G3U {
+        internal static System.Drawing.Bitmap GPU {
             get {
-                object obj = ResourceManager.GetObject("G3U", resourceCulture);
+                object obj = ResourceManager.GetObject("GPU", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +243,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G4D {
+        internal static System.Drawing.Bitmap GRD {
             get {
-                object obj = ResourceManager.GetObject("G4D", resourceCulture);
+                object obj = ResourceManager.GetObject("GRD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +253,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G4L {
+        internal static System.Drawing.Bitmap GRL {
             get {
-                object obj = ResourceManager.GetObject("G4L", resourceCulture);
+                object obj = ResourceManager.GetObject("GRL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +263,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G4R {
+        internal static System.Drawing.Bitmap GRR {
             get {
-                object obj = ResourceManager.GetObject("G4R", resourceCulture);
+                object obj = ResourceManager.GetObject("GRR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +273,9 @@ namespace Pacman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap G4U {
+        internal static System.Drawing.Bitmap GRU {
             get {
-                object obj = ResourceManager.GetObject("G4U", resourceCulture);
+                object obj = ResourceManager.GetObject("GRU", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

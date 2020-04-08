@@ -33,10 +33,6 @@ namespace Pacman
         {
 
         }
-        public void GhostStart(string ghost)
-        {
-
-        }
 
     }
 }

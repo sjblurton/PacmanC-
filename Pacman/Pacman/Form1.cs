@@ -15,21 +15,9 @@ namespace Pacman
 
         #region Veribles
 
-        int[] waypointsX = new int[10] { 23, 52, 102, 152, 200, 248, 294, 342, 392, 422 };
-        /*
-        int[] waypointsmainX = new int[100]   { 20,500,100,500,195,245,500,340,500,420,
-                                            20,500,100,500,195,245,500,340,500,420,
-                                            20,500,100,150,195,245,290,340,500,420,
-                                            500,500,500,150,195,245,290,500,500,500,
-                                            500,500,100,150,500,500,290,340,500,500,
-                                            500,500,500,150,500,500,290,500,500,500,
-                                            20,500,100,150,195,245,290,340,500,420,
-                                            20,50,100,150,195,245,290,340,390,420,
-                                            20,50,100,150,195,245,290,340,390,420,
-                                            20,500,500,500,195,245,500,500,500,420 };
-*/
-        int[] waypointsY = new int[] { 20, 85, 133, 180, 230, 280, 325, 375, 420, 470 };
-        int PlayerSpeed = 1;
+        int[] waypointsX = new int[10] { 24, 52, 104, 152, 200, 248, 294, 342, 392, 422 };
+        int[] waypointsY = new int[] { 20, 86, 134, 180, 230, 280, 326, 376, 420, 470 };
+        int PlayerSpeed = 2;
         int score = 0;
 
         #endregion
@@ -39,8 +27,8 @@ namespace Pacman
         public Form1()
         {
             InitializeComponent();
-            Settings.playerDirection = Directions.Stop;
             placeCoin();
+            keyLeft = true;
         }
 
         #endregion
@@ -49,17 +37,79 @@ namespace Pacman
 
         private void gameEngineTimer_Tick(object sender, EventArgs e)
         {
+            PlayerWhichWaypoint();
+            CollectingPoints();
+            playerRightLeftMovment();
+            PlayerUpDownMovment();
 
-            #region Left to right movment on the board for the player on the Y axses
 
+        }
+
+        #endregion
+
+        #region player moving between waypoints
+
+        private void PlayerUpDownMovment()
+        {
+            //all the ups to downs on X axses
+            //Up and down X axses column 0 & 9
+            if (((player.Left == waypointsX[0]) || (player.Left == waypointsX[9]))
+                && ((player.Top > waypointsY[0] && player.Top < waypointsY[1])
+                || (player.Top > waypointsY[1] && player.Top < waypointsY[2])
+                || (player.Top > waypointsY[6] && player.Top < waypointsY[7])
+                || (player.Top > waypointsY[8] && player.Top < waypointsY[9])))
+            {
+                MovePlayerUD();
+            }
+            //Up and down X axses column 1 & 8
+            else if (((player.Left == waypointsX[1]) || (player.Left == waypointsX[8]))
+                && ((player.Top > waypointsY[7] && player.Top < waypointsY[8])))
+            {
+                MovePlayerUD();
+            }
+            //Up and down X axses column 2 & 7
+            else if (((player.Left == waypointsX[2]) || (player.Left == waypointsX[7]))
+                && ((player.Top > waypointsY[0] && player.Top < waypointsY[1])
+                || (player.Top > waypointsY[1] && player.Top < waypointsY[2])
+                || (player.Top > waypointsY[2] && player.Top < waypointsY[4])
+                || (player.Top > waypointsY[4] && player.Top < waypointsY[6])
+                || (player.Top > waypointsY[6] && player.Top < waypointsY[7])
+                || (player.Top > waypointsY[7] && player.Top < waypointsY[8])))
+            {
+                MovePlayerUD();
+            }
+            //Up and down X axses column 3 & 6
+            else if (((player.Left == waypointsX[3]) || (player.Left == waypointsX[6]))
+                && ((player.Top > waypointsY[3] && player.Top < waypointsY[4])
+                || (player.Top > waypointsY[4] && player.Top < waypointsY[5])
+                || (player.Top > waypointsY[5] && player.Top < waypointsY[6])
+                || (player.Top > waypointsY[7] && player.Top < waypointsY[8])))
+            {
+                MovePlayerUD();
+            }
+            //Up and down X axses column 4 & 5
+            else if (((player.Left == waypointsX[4]) || (player.Left == waypointsX[5]))
+                && ((player.Top > waypointsY[0] && player.Top < waypointsY[1])
+                || (player.Top > waypointsY[2] && player.Top < waypointsY[3])
+                || (player.Top > waypointsY[6] && player.Top < waypointsY[7])
+                || (player.Top > waypointsY[8] && player.Top < waypointsY[9])))
+            {
+                MovePlayerUD();
+            }
+        }
+
+        private void playerRightLeftMovment()
+        {
             //checking if player is inbetween waypoints
-            //all left to rights TODO THE CROSS OVER!!!
             //Row Y 9 left to right
             if ((player.Top == waypointsY[9])
                 && ((player.Left > waypointsX[0] && player.Left < waypointsX[4])
                 || (player.Left > waypointsX[4] && player.Left < waypointsX[5])
                 || (player.Left > waypointsX[5] && player.Left < waypointsX[9])))
+            {
                 MovePlayerLR();
+
+            }
             //Row Y 8 left to right
             else if ((player.Top == waypointsY[8])
                 && ((player.Left > waypointsX[0] && player.Left < waypointsX[1])
@@ -68,7 +118,10 @@ namespace Pacman
                 || (player.Left > waypointsX[5] && player.Left < waypointsX[6])
                 || (player.Left > waypointsX[7] && player.Left < waypointsX[8])
                 || (player.Left > waypointsX[8] && player.Left < waypointsX[9])))
+            {
                 MovePlayerLR();
+
+            }
             //Row Y 7 left to right
             else if ((player.Top == waypointsY[7])
                 && ((player.Left > waypointsX[0] && player.Left < waypointsX[1])
@@ -78,7 +131,10 @@ namespace Pacman
                 || (player.Left > waypointsX[5] && player.Left < waypointsX[6])
                 || (player.Left > waypointsX[6] && player.Left < waypointsX[7])
                 || (player.Left > waypointsX[8] && player.Left < waypointsX[9])))
+            {
                 MovePlayerLR();
+
+            }
             //Row Y 6 left to right
             else if ((player.Top == waypointsY[6])
                 && ((player.Left > waypointsX[0] && player.Left < waypointsX[2])
@@ -87,31 +143,46 @@ namespace Pacman
                 || (player.Left > waypointsX[5] && player.Left < waypointsX[6])
                 || (player.Left > waypointsX[6] && player.Left < waypointsX[7])
                 || (player.Left > waypointsX[7] && player.Left < waypointsX[9])))
+            {
                 MovePlayerLR();
+
+            }
             //Row Y 5 left to right
             else if ((player.Top == waypointsY[5])
                 && ((player.Left > waypointsX[3] && player.Left < waypointsX[6])))
+            {
                 MovePlayerLR();
+
+            }
             //Row Y 4 left to right
             else if ((player.Top == waypointsY[4])
                 && ((player.Left > waypointsX[2] && player.Left < waypointsX[3])
                 || (player.Left > -20 && player.Left < waypointsX[2]) //the cross over
                 || (player.Left > waypointsX[6] && player.Left < waypointsX[7])
                 || (player.Left > waypointsX[7] && player.Left < 470))) //the cross over
+            {
                 MovePlayerLR();
+
+            }
             //Row Y 3 left to right
             else if ((player.Top == waypointsY[3])
                 && ((player.Left > waypointsX[3] && player.Left < waypointsX[4])
                 || (player.Left > waypointsX[4] && player.Left < waypointsX[5])
                 || (player.Left > waypointsX[5] && player.Left < waypointsX[6])))
+            {
                 MovePlayerLR();
+
+            }
             //Row Y 2 left to right
             else if ((player.Top == waypointsY[2])
                 && ((player.Left > waypointsX[0] && player.Left < waypointsX[2])
                 || (player.Left > waypointsX[3] && player.Left < waypointsX[4])
                 || (player.Left > waypointsX[5] && player.Left < waypointsX[6])
                 || (player.Left > waypointsX[7] && player.Left < waypointsX[9])))
+            {
                 MovePlayerLR();
+
+            }
             //Row Y  1 left to right
             else if ((player.Top == waypointsY[1])
                 && ((player.Left > waypointsX[0] && player.Left < waypointsX[2])
@@ -121,7 +192,10 @@ namespace Pacman
                 || (player.Left > waypointsX[5] && player.Left < waypointsX[6])
                 || (player.Left > waypointsX[6] && player.Left < waypointsX[7])
                 || (player.Left > waypointsX[7] && player.Left < waypointsX[9])))
+            {
                 MovePlayerLR();
+            }
+
             //Row Y  0 left to right
             else if ((player.Top == waypointsY[0])
                 && ((player.Left > waypointsX[0] && player.Left < waypointsX[2])
@@ -129,7 +203,10 @@ namespace Pacman
                 || (player.Left > waypointsX[4] && player.Left < waypointsX[5])
                 || (player.Left > waypointsX[5] && player.Left < waypointsX[7])
                 || (player.Left > waypointsX[7] && player.Left < waypointsX[9])))
+            {
                 MovePlayerLR();
+            }
+
             // The Cross over left to right
             else if (((player.Top == waypointsY[4]) && (player.Left == -20)) && (Settings.playerDirection == Directions.Left))
             {
@@ -141,121 +218,91 @@ namespace Pacman
                 player.Left = -20;
 
             }
-
-
-
-
-            #endregion
-
-            #region Up and down movment on the board for the player on the X axses
-
-            //all the ups to downs on X axses
-            //Up and down X axses column 0 & 9
-            else if (((player.Left == waypointsX[0]) || (player.Left == waypointsX[9]))
-                && ((player.Top > waypointsY[0] && player.Top < waypointsY[1])
-                || (player.Top > waypointsY[1] && player.Top < waypointsY[2])
-                || (player.Top > waypointsY[6] && player.Top < waypointsY[7])
-                || (player.Top > waypointsY[8] && player.Top < waypointsY[9])))
-                MovePlayerUD();
-            //Up and down X axses column 1 & 8
-            else if (((player.Left == waypointsX[1]) || (player.Left == waypointsX[8]))
-                && ((player.Top > waypointsY[7] && player.Top < waypointsY[8])))
-                MovePlayerUD();
-            //Up and down X axses column 2 & 7
-            else if (((player.Left == waypointsX[2]) || (player.Left == waypointsX[7]))
-                && ((player.Top > waypointsY[0] && player.Top < waypointsY[1])
-                || (player.Top > waypointsY[1] && player.Top < waypointsY[2])
-                || (player.Top > waypointsY[2] && player.Top < waypointsY[4])
-                || (player.Top > waypointsY[4] && player.Top < waypointsY[6])
-                || (player.Top > waypointsY[6] && player.Top < waypointsY[7])
-                || (player.Top > waypointsY[7] && player.Top < waypointsY[8])))
-                MovePlayerUD();
-            //Up and down X axses column 3 & 6
-            else if (((player.Left == waypointsX[3]) || (player.Left == waypointsX[6]))
-                && ((player.Top > waypointsY[3] && player.Top < waypointsY[4])
-                || (player.Top > waypointsY[4] && player.Top < waypointsY[5])
-                || (player.Top > waypointsY[5] && player.Top < waypointsY[6])
-                || (player.Top > waypointsY[7] && player.Top < waypointsY[8])))
-                MovePlayerUD();
-            //Up and down X axses column 4 & 5
-            else if (((player.Left == waypointsX[4]) || (player.Left == waypointsX[5]))
-                && ((player.Top > waypointsY[0] && player.Top < waypointsY[1])
-                || (player.Top > waypointsY[2] && player.Top < waypointsY[3])
-                || (player.Top > waypointsY[6] && player.Top < waypointsY[7])
-                || (player.Top > waypointsY[8] && player.Top < waypointsY[9])))
-                MovePlayerUD();
-            else
-                PlayerWhichWaypoint();
-
-            #endregion
-
-
         }
 
         #endregion
 
-        #region player movment timers
-
-        private void playTmerR_Tick(object sender, EventArgs e)
-        {
-            if (Settings.playerDirection == Directions.Right)
-                player.Left += PlayerSpeed;
-            else playTimerR.Stop();
-        }
-
-        private void playTimerL_Tick(object sender, EventArgs e)
-        {
-            if (Settings.playerDirection == Directions.Left)
-                player.Left -= PlayerSpeed;
-            else playTimerL.Stop();
-        }
-
-        private void playTimerU_Tick(object sender, EventArgs e)
-        {
-            if (Settings.playerDirection == Directions.Up)
-                player.Top -= PlayerSpeed;
-            else playTimerU.Stop();
-        }
-
-        private void playTimerD_Tick(object sender, EventArgs e)
-        {
-            if (Settings.playerDirection == Directions.Down)
-                player.Top += PlayerSpeed;
-            else playTimerD.Stop();
-        }
-
-        #endregion
 
         #region key inputs
+        bool keyUp = false, keyDown = false, keyLeft = false, keyRight = false, UpDown = false, RightLeft = false; 
 
         private void keyIsDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up)
             {
-                Settings.playerDirection = Directions.Up;
+                UpDown = true;
+                keyUp = true;
+                keyDown = false;
+                keyRight = false;
+                keyLeft = false;
+                if (keyUp)
+                    player.Image = Properties.Resources.PlayerU;
             }
             if (e.KeyCode == Keys.Down)
             {
-                Settings.playerDirection = Directions.Down;
+                UpDown = false;
+                keyUp = false;
+                keyDown = true;
+                keyRight = false;
+                keyLeft = false;
+                if (keyDown)
+                    player.Image = Properties.Resources.PlayerD;
+
             }
             if (e.KeyCode == Keys.Left)
             {
-                Settings.playerDirection = Directions.Left;
+                RightLeft = false;
+                keyUp = false;
+                keyDown = false;
+                keyRight = false;
+                keyLeft = true;
+                if (keyLeft)
+                    player.Image = Properties.Resources.PlayerL;
             }
             if (e.KeyCode == Keys.Right)
             {
-                Settings.playerDirection = Directions.Right;
+                RightLeft = true;
+                keyUp = false;
+                keyDown = false;
+                keyRight = true;
+                keyLeft = false;
+                if (keyRight)
+                    player.Image = Properties.Resources.PlayerR;
+
             }
+
         }
 
-        private void keyIsUp(object sender, KeyEventArgs e)
+
+        private void PlayerMovmentLeft()
         {
-            if (e.KeyCode == Keys.Up) { Settings.playerDirection = Directions.Up; }
-            if (e.KeyCode == Keys.Down) { Settings.playerDirection = Directions.Down; }
-            if (e.KeyCode == Keys.Left) { Settings.playerDirection = Directions.Left; }
-            if (e.KeyCode == Keys.Right) { Settings.playerDirection = Directions.Right; }
+                Settings.playerDirection = Directions.Left;
+                player.Left -= PlayerSpeed;
         }
+        private void PlayerMovmentRight() 
+        {
+                Settings.playerDirection = Directions.Right;
+                player.Left += PlayerSpeed;
+        }
+        private void PlayerMovmentUp() 
+        {
+                Settings.playerDirection = Directions.Up;
+                player.Top -= PlayerSpeed;
+        }
+        private void PlayerMovmentDown()
+        {
+                Settings.playerDirection = Directions.Down;
+                player.Top += PlayerSpeed;
 
+        }
+        private void PlayerMovmentStop() 
+        {
+                Settings.playerDirection = Directions.Stop;
+                player.Left += 0;
+                player.Top += 0;
+
+
+        }
         #endregion
 
         #region checking which waypoint the player is at
@@ -274,7 +321,6 @@ namespace Pacman
                 || (player.Top == waypointsY[8] && player.Left == waypointsX[0])
                 || (player.Top == waypointsY[8] && player.Left == waypointsX[5]))
             {
-                stopMovingPlayer();
                 MovePlayerRD();
             }
             //LD
@@ -288,7 +334,6 @@ namespace Pacman
                      || (player.Top == waypointsY[8] && player.Left == waypointsX[9])
                      || (player.Top == waypointsY[8] && player.Left == waypointsX[4]))
             {
-                stopMovingPlayer();
                 MovePlayerLD();
             }
             //LU
@@ -299,7 +344,6 @@ namespace Pacman
                      || (player.Top == waypointsY[8] && player.Left == waypointsX[6])
                      || (player.Top == waypointsY[9] && player.Left == waypointsX[9]))
             {
-                stopMovingPlayer();
                 MovePlayerLU();
             }
             //RU
@@ -310,7 +354,6 @@ namespace Pacman
                      || (player.Top == waypointsY[8] && player.Left == waypointsX[7])
                      || (player.Top == waypointsY[9] && player.Left == waypointsX[0]))
             {
-                stopMovingPlayer();
                 MovePlayerRU();
             }
             //LRD
@@ -321,7 +364,6 @@ namespace Pacman
                      || (player.Top == waypointsY[7] && player.Left == waypointsX[6])
                      || (player.Top == waypointsY[7] && player.Left == waypointsX[3]))
             {
-                stopMovingPlayer();
                 MovePlayerLRD();
             }
             //RUD
@@ -331,7 +373,6 @@ namespace Pacman
                      || (player.Top == waypointsY[5] && player.Left == waypointsX[3])
                      || (player.Top == waypointsY[7] && player.Left == waypointsX[2]))
             {
-                stopMovingPlayer();
                 MovePlayerRUD();
             }
             //LRU
@@ -348,7 +389,6 @@ namespace Pacman
                      || (player.Top == waypointsY[9] && player.Left == waypointsX[4])
                      || (player.Top == waypointsY[9] && player.Left == waypointsX[5]))
             {
-                stopMovingPlayer();
                 MovePlayerLRU();
             }
             //LUD
@@ -358,7 +398,6 @@ namespace Pacman
                      || (player.Top == waypointsY[5] && player.Left == waypointsX[6])
                      || (player.Top == waypointsY[7] && player.Left == waypointsX[7]))
             {
-                stopMovingPlayer();
                 MovePlayerLUD();
             }
             //LRUD
@@ -369,7 +408,6 @@ namespace Pacman
                      || (player.Top == waypointsY[6] && player.Left == waypointsX[2])
                      || (player.Top == waypointsY[6] && player.Left == waypointsX[7]))
             {
-                stopMovingPlayer();
                 MovePlayerLRUD();
             }
 
@@ -381,72 +419,133 @@ namespace Pacman
 
         private void stopMovingPlayer()
         {
-            playTimerR.Stop();
-            playTimerD.Stop();
-            playTimerU.Stop();
-            playTimerL.Stop();
-            Settings.playerDirection = Directions.Stop;
+            PlayerMovmentStop();
         }
         public void MovePlayerLRUD()
         {
-            playTimerL.Start();
-            playTimerR.Start();
-            playTimerU.Start();
-            playTimerD.Start();
+            PlayerMovmentStop();
+
+            if (keyLeft)
+                PlayerMovmentLeft();
+            else if (keyRight)
+                PlayerMovmentRight();
+            else if (keyUp)
+                PlayerMovmentUp();
+            else if (keyDown)
+                PlayerMovmentDown();
+            else
+                PlayerMovmentStop();
         }
         public void MovePlayerLRU()
         {
-            playTimerL.Start();
-            playTimerR.Start();
-            playTimerU.Start();
-        }
+            PlayerMovmentStop();
+
+            if (keyLeft)
+                    PlayerMovmentLeft();
+                else if (keyRight)
+                    PlayerMovmentRight();
+                else if (keyUp)
+                    PlayerMovmentUp();
+                else
+                    PlayerMovmentStop();
+       }
         public void MovePlayerLRD()
         {
-            playTimerL.Start();
-            playTimerR.Start();
-            playTimerD.Start();
+            PlayerMovmentStop();
+
+            if (keyLeft)
+                PlayerMovmentLeft();
+            else if (keyRight)
+                PlayerMovmentRight();
+            else if (keyDown)
+                PlayerMovmentDown();
+            else
+                PlayerMovmentStop();
         }
         public void MovePlayerLUD()
         {
-            playTimerL.Start();
-            playTimerU.Start();
-            playTimerD.Start();
+            PlayerMovmentStop();
+
+            if (keyLeft)
+                PlayerMovmentLeft();
+            else if (keyUp)
+                PlayerMovmentUp();
+            else if (keyDown)
+                PlayerMovmentDown();
+            else
+                PlayerMovmentStop();
         }
         public void MovePlayerRUD()
         {
-            playTimerR.Start();
-            playTimerU.Start();
-            playTimerD.Start();
+            PlayerMovmentStop();
+
+            if (keyRight)
+                PlayerMovmentRight();
+            else if (keyUp)
+                PlayerMovmentUp();
+            else if (keyDown)
+                PlayerMovmentDown();
+            else
+                PlayerMovmentStop();
         }
         public void MovePlayerLD()
         {
-            playTimerL.Start();
-            playTimerD.Start();
+            PlayerMovmentStop();
+
+            if (keyLeft)
+                PlayerMovmentLeft();
+            else if (keyDown)
+                PlayerMovmentDown();
+            else
+                PlayerMovmentStop();
+
         }
         public void MovePlayerLU()
         {
-            playTimerL.Start();
-            playTimerU.Start();
+            PlayerMovmentStop();
+
+            if (keyLeft)
+                PlayerMovmentLeft();
+            else if (keyUp)
+                PlayerMovmentUp();
+            else
+                PlayerMovmentStop();
         }
         public void MovePlayerRU()
         {
-            playTimerR.Start();
-            playTimerU.Start();
+            PlayerMovmentStop();
+
+            if (keyRight)
+                PlayerMovmentRight();
+            else if (keyUp)
+                PlayerMovmentUp();
+            else
+                PlayerMovmentStop();
         }
         public void MovePlayerRD()
         {
-            playTimerR.Start();
-            playTimerD.Start();
+            PlayerMovmentStop();
+            if (keyRight)
+                PlayerMovmentRight();
+            else if (keyDown)
+                PlayerMovmentDown();
+            else
+                PlayerMovmentStop();
         }
         public void MovePlayerLR()
         {
-            playTimerL.Start();
-            playTimerR.Start();
+            if (RightLeft)
+                PlayerMovmentRight();
+            else if (!RightLeft)
+                PlayerMovmentLeft();
         }
         public void MovePlayerUD()
         {
-            playTimerU.Start();
-            playTimerD.Start();
+            if (UpDown)
+                PlayerMovmentUp();
+            else if (!UpDown)
+                PlayerMovmentDown();
+
         }
 
         #endregion
@@ -821,21 +920,11 @@ namespace Pacman
 
         int coinCount = 0;
         bool youWin = false;
-        private void timer1_Tick(object sender, EventArgs e)
+
+        private void CollectingPoints()
         {
             if (!youWin)
             {
-
-                if ((player.Image != Properties.Resources.PlayerR) && Settings.playerDirection == Directions.Right)
-                    player.Image = Properties.Resources.PlayerR;
-                else if ((player.Image != Properties.Resources.PlayerL) && Settings.playerDirection == Directions.Left)
-                    player.Image = Properties.Resources.PlayerL;
-                else if ((player.Image != Properties.Resources.PlayerU) && Settings.playerDirection == Directions.Up)
-                    player.Image = Properties.Resources.PlayerU;
-                else if ((player.Image != Properties.Resources.PlayerD) && Settings.playerDirection == Directions.Down)
-                    player.Image = Properties.Resources.PlayerD;
-
-
                 lbScore.Text = "Score:\n" + score;
 
                 //inside the second loop adding j verible to controls
@@ -860,17 +949,18 @@ namespace Pacman
             {
                 YouWin();
             }
-
         }
 
         private void YouWin()
         {
-
+            throw new NotImplementedException();
         }
+
+
 
         #endregion
 
-        #region ghoast timers
+        #region Ghost Timers
         bool chase = false;
         bool scatter = false;
         bool frightened = false;
@@ -879,245 +969,49 @@ namespace Pacman
         bool pinkInHouse = true;
         bool blueInHouse = true;
         bool orangeInHouse = true;
-        int ghostSpeed = 1;
+        int ghostSpeed = 2;
 
-        private void redTimer_Tick(object sender, EventArgs e)
+
+        private void ghostTimer_Tick(object sender, EventArgs e)
         {
-            if (redInHouse)
-            {
-                if (pbGhostRed.Left > 235 && pbGhostRed.Top == 230)
-                {
-                    Settings.GhostRedDirection = Directions.Left;
-                }
-                else if (pbGhostRed.Left == 235 && pbGhostRed.Top > waypointsY[3])
-                {
-                    Settings.GhostRedDirection = Directions.Up;
-                }
-                else if (pbGhostRed.Left == 235 && pbGhostRed.Top == waypointsY[3])
-                {
-                    Settings.GhostRedDirection = Directions.Right;
-                    scatter = true;
-                    redInHouse = false;
-                }
-            }
-            else if (!redInHouse)
-            {
-                if (scatter)
-                {
-                    ghostWhichWaypoint("redScatter");
 
-                }
+            RedMovmentMethod();
+
+            PinkMovmentMethod();
+
+            BlueMovmentMethod();
+
+            OrangeMovmentMethod();
+
+            if (redInHouse || pinkInHouse || blueInHouse || orangeInHouse)
+            {
+                GhostsInHouse();
+            }
+            if (!redInHouse && scatter)
+            {
+                ghostWhichWaypoint("redScatter");
+            }
+            if (!pinkInHouse && scatter)
+            {
+                ghostWhichWaypoint("pinkScatter");
+            }
+            if (!blueInHouse && scatter)
+            {
+                ghostWhichWaypoint("blueScatter");
+            }
+            if (!orangeInHouse && scatter)
+            {
+                ghostWhichWaypoint("orangeScatter");
             }
 
 
         }
-        private void pinkTimer_Tick(object sender, EventArgs e)
-        {
-            if (!redInHouse)
-            {
-                if (pinkInHouse)
-                {
-                    if (pbGhostPink.Left < 215 && pbGhostPink.Top == 230)
-                    {
-                        Settings.GhostPinkDirection = Directions.Right;
-                    }
-                    else if (pbGhostPink.Left == 220 && pbGhostPink.Top > waypointsY[3])
-                    {
-                        Settings.GhostPinkDirection = Directions.Up;
-                    }
-                    else if (pbGhostPink.Left == 220 && pbGhostPink.Top == waypointsY[3])
-                    {
-                        Settings.GhostPinkDirection = Directions.Left;
-                        scatter = true;
-                        pinkInHouse = false;
-                    }
-                }
-                else if (!pinkInHouse)
-                {
-                    if (scatter)
-                    {
-                        ghostWhichWaypoint("pinkScatter");
-
-                    }
-                }
-
-            }
-            else Settings.GhostPinkDirection = Directions.Stop;
 
 
-        }
-        private void blueTimer_Tick(object sender, EventArgs e)
-        {
+        #endregion
 
-            if (!pinkInHouse && !redInHouse)
-            {
-                if (blueInHouse)
-                {
-                    if (pbGhostBlue.Left > 235 && pbGhostBlue.Top == 230)
-                    {
-                        Settings.GhostBlueDirection = Directions.Left;
-                    }
-                    else if (pbGhostBlue.Left == 235 && pbGhostBlue.Top > waypointsY[3])
-                    {
-                        Settings.GhostBlueDirection = Directions.Up;
-                    }
-                    else if (pbGhostBlue.Left == 235 && pbGhostBlue.Top == waypointsY[3])
-                    {
-                        Settings.GhostBlueDirection = Directions.Right;
-                        scatter = true;
-                        blueInHouse = false;
-                    }
-                }
-                else if (!blueInHouse)
-                {
-                    if (scatter)
-                    {
-                        ghostWhichWaypoint("blueScatter");
-
-                    }
-
-                }
-
-            }
-            else Settings.GhostBlueDirection = Directions.Stop;
-
-
-        }
-
-        private void orangeTimer_Tick(object sender, EventArgs e)
-        {
-            if (!pinkInHouse && !redInHouse && !blueInHouse)
-            {
-                if (orangeInHouse)
-                {
-                    if (pbGhostOrange.Left < 215 && pbGhostOrange.Top == 230)
-                    {
-                        Settings.GhostOrangeDirection = Directions.Right;
-                    }
-                    else if (pbGhostOrange.Left == 220 && pbGhostOrange.Top > waypointsY[3])
-                    {
-                        Settings.GhostOrangeDirection = Directions.Up;
-                    }
-                    else if (pbGhostOrange.Left == 220 && pbGhostOrange.Top == waypointsY[3])
-                    {
-                        Settings.GhostOrangeDirection = Directions.Left;
-                        scatter = true;
-                        orangeInHouse = false;
-                    }
-                }
-                else if (!orangeInHouse)
-                {
-                    if (scatter)
-                    {
-                        ghostWhichWaypoint("orangeScatter");
-
-                    }
-                }
-
-            }
-            else Settings.GhostOrangeDirection = Directions.Stop;
-
-        }
-
-
-
-
-        private void redMovmenTimer_Tick(object sender, EventArgs e)
-        {
-            if (Settings.GhostRedDirection == Directions.Up)
-            {
-                pbGhostRed.Image = Properties.Resources.GRU;
-                pbGhostRed.Top -= ghostSpeed;
-            }
-            else if (Settings.GhostRedDirection == Directions.Down)
-            {
-                pbGhostRed.Image = Properties.Resources.GRD;
-                pbGhostRed.Top += ghostSpeed;
-            }
-            else if (Settings.GhostRedDirection == Directions.Left)
-            {
-                pbGhostRed.Image = Properties.Resources.GRL;
-                pbGhostRed.Left -= ghostSpeed;
-            }
-            else if (Settings.GhostRedDirection == Directions.Right)
-            {
-                pbGhostRed.Image = Properties.Resources.GRR;
-                pbGhostRed.Left += ghostSpeed;
-            }
-            else if (Settings.GhostRedDirection == Directions.Stop)
-            {
-                pbGhostRed.Image = Properties.Resources.GRD;
-                pbGhostRed.Left += 0;
-                pbGhostRed.Top += 0;
-            }
-
-
-        }
-        private void pinkMovmentTimer_Tick(object sender, EventArgs e)
-        {
-            if (Settings.GhostPinkDirection == Directions.Up)
-            {
-                pbGhostPink.Image = Properties.Resources.GPU;
-                pbGhostPink.Top -= ghostSpeed;
-            }
-            else if (Settings.GhostPinkDirection == Directions.Down)
-            {
-                pbGhostPink.Image = Properties.Resources.GPD;
-                pbGhostPink.Top += ghostSpeed;
-            }
-            else if (Settings.GhostPinkDirection == Directions.Left)
-            {
-                pbGhostPink.Image = Properties.Resources.GPL;
-                pbGhostPink.Left -= ghostSpeed;
-            }
-            else if (Settings.GhostPinkDirection == Directions.Right)
-            {
-                pbGhostPink.Image = Properties.Resources.GPR;
-                pbGhostPink.Left += ghostSpeed;
-            }
-            else if (Settings.GhostPinkDirection == Directions.Stop)
-            {
-                pbGhostPink.Image = Properties.Resources.GPD;
-                pbGhostPink.Left += 0;
-                pbGhostPink.Top += 0;
-
-            }
-
-
-        }
-        private void blueMovmentTimer_Tick(object sender, EventArgs e)
-        {
-            if (Settings.GhostBlueDirection == Directions.Up)
-            {
-                pbGhostBlue.Image = Properties.Resources.GBU;
-                pbGhostBlue.Top -= ghostSpeed;
-            }
-            else if (Settings.GhostBlueDirection == Directions.Down)
-            {
-                pbGhostBlue.Image = Properties.Resources.GBD;
-                pbGhostBlue.Top += ghostSpeed;
-            }
-            else if (Settings.GhostBlueDirection == Directions.Left)
-            {
-                pbGhostBlue.Image = Properties.Resources.GBL;
-                pbGhostBlue.Left -= ghostSpeed;
-            }
-            else if (Settings.GhostBlueDirection == Directions.Right)
-            {
-                pbGhostBlue.Image = Properties.Resources.GBR;
-                pbGhostBlue.Left += ghostSpeed;
-            }
-            else if (Settings.GhostBlueDirection == Directions.Stop)
-            {
-                pbGhostBlue.Image = Properties.Resources.GBD;
-                pbGhostBlue.Left += 0;
-                pbGhostBlue.Top += 0;
-
-            }
-
-        }
-
-        private void orangeMovmentTimer_Tick(object sender, EventArgs e)
+        #region Ghost Movment Methods
+        private void OrangeMovmentMethod()
         {
             if (Settings.GhostOrangeDirection == Directions.Up)
             {
@@ -1146,18 +1040,102 @@ namespace Pacman
                 pbGhostOrange.Top += 0;
 
             }
-
         }
 
+        private void BlueMovmentMethod()
+        {
+            if (Settings.GhostBlueDirection == Directions.Up)
+            {
+                pbGhostBlue.Image = Properties.Resources.GBU;
+                pbGhostBlue.Top -= ghostSpeed;
+            }
+            else if (Settings.GhostBlueDirection == Directions.Down)
+            {
+                pbGhostBlue.Image = Properties.Resources.GBD;
+                pbGhostBlue.Top += ghostSpeed;
+            }
+            else if (Settings.GhostBlueDirection == Directions.Left)
+            {
+                pbGhostBlue.Image = Properties.Resources.GBL;
+                pbGhostBlue.Left -= ghostSpeed;
+            }
+            else if (Settings.GhostBlueDirection == Directions.Right)
+            {
+                pbGhostBlue.Image = Properties.Resources.GBR;
+                pbGhostBlue.Left += ghostSpeed;
+            }
+            else if (Settings.GhostBlueDirection == Directions.Stop)
+            {
+                pbGhostBlue.Image = Properties.Resources.GBD;
+                pbGhostBlue.Left += 0;
+                pbGhostBlue.Top += 0;
 
+            }
+        }
 
+        private void PinkMovmentMethod()
+        {
+            if (Settings.GhostPinkDirection == Directions.Up)
+            {
+                pbGhostPink.Image = Properties.Resources.GPU;
+                pbGhostPink.Top -= ghostSpeed;
+            }
+            else if (Settings.GhostPinkDirection == Directions.Down)
+            {
+                pbGhostPink.Image = Properties.Resources.GPD;
+                pbGhostPink.Top += ghostSpeed;
+            }
+            else if (Settings.GhostPinkDirection == Directions.Left)
+            {
+                pbGhostPink.Image = Properties.Resources.GPL;
+                pbGhostPink.Left -= ghostSpeed;
+            }
+            else if (Settings.GhostPinkDirection == Directions.Right)
+            {
+                pbGhostPink.Image = Properties.Resources.GPR;
+                pbGhostPink.Left += ghostSpeed;
+            }
+            else if (Settings.GhostPinkDirection == Directions.Stop)
+            {
+                pbGhostPink.Image = Properties.Resources.GPD;
+                pbGhostPink.Left += 0;
+                pbGhostPink.Top += 0;
 
+            }
+        }
+
+        private void RedMovmentMethod()
+        {
+            if (Settings.GhostRedDirection == Directions.Up)
+            {
+                pbGhostRed.Image = Properties.Resources.GRU;
+                pbGhostRed.Top -= ghostSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Down)
+            {
+                pbGhostRed.Image = Properties.Resources.GRD;
+                pbGhostRed.Top += ghostSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Left)
+            {
+                pbGhostRed.Image = Properties.Resources.GRL;
+                pbGhostRed.Left -= ghostSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Right)
+            {
+                pbGhostRed.Image = Properties.Resources.GRR;
+                pbGhostRed.Left += ghostSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Stop)
+            {
+                pbGhostRed.Image = Properties.Resources.GRD;
+                pbGhostRed.Left += 0;
+                pbGhostRed.Top += 0;
+            }
+        }
         #endregion
 
-        #region Ghost Methods
-
-
-        #region ghost waypoints
+        #region Ghost Waypoints
 
         private void ghostWhichWaypoint(string ghost)
         {
@@ -1588,9 +1566,100 @@ namespace Pacman
 
         #endregion
 
-        #region random ghost movment logic
+        #region Ghost In house Method
 
-        Random rnd = new Random();
+        private void GhostsInHouse()
+        {
+            int leftExit = 220;
+            int rightExit = 236;
+            int inHouseStartY = 230;
+            if (redInHouse)
+            {
+                Settings.GhostPinkDirection = Directions.Stop;
+                Settings.GhostBlueDirection = Directions.Stop;
+                Settings.GhostOrangeDirection = Directions.Stop;
+
+                if (pbGhostRed.Left > rightExit && pbGhostRed.Top == inHouseStartY)
+                {
+                    Settings.GhostRedDirection = Directions.Left;
+                }
+                else if (pbGhostRed.Left == rightExit && pbGhostRed.Top > waypointsY[3])
+                {
+                    Settings.GhostRedDirection = Directions.Up;
+                }
+                else if (pbGhostRed.Left == rightExit && pbGhostRed.Top == waypointsY[3])
+                {
+                    Settings.GhostRedDirection = Directions.Right;
+                    scatter = true;
+                    redInHouse = false;
+                }
+
+            }
+            else if (!redInHouse)
+            {
+                if (pinkInHouse)
+                {
+                    if (pbGhostPink.Left < leftExit && pbGhostPink.Top == inHouseStartY)
+                    {
+                        Settings.GhostPinkDirection = Directions.Right;
+                    }
+                    else if (pbGhostPink.Left == leftExit && pbGhostPink.Top > waypointsY[3])
+                    {
+                        Settings.GhostPinkDirection = Directions.Up;
+                    }
+                    else if (pbGhostPink.Left == leftExit && pbGhostPink.Top == waypointsY[3])
+                    {
+                        Settings.GhostPinkDirection = Directions.Left;
+                        scatter = true;
+                        pinkInHouse = false;
+                    }
+                }
+                else if (!pinkInHouse)
+                {
+                    if (blueInHouse)
+                    {
+                        if (pbGhostBlue.Left > rightExit && pbGhostBlue.Top == inHouseStartY)
+                        {
+                            Settings.GhostBlueDirection = Directions.Left;
+                        }
+                        else if (pbGhostBlue.Left == rightExit && pbGhostBlue.Top > waypointsY[3])
+                        {
+                            Settings.GhostBlueDirection = Directions.Up;
+                        }
+                        else if (pbGhostBlue.Left == rightExit && pbGhostBlue.Top == waypointsY[3])
+                        {
+                            Settings.GhostBlueDirection = Directions.Right;
+                            scatter = true;
+                            blueInHouse = false;
+                        }
+                    }
+                    else if (!blueInHouse)
+                    {
+                        if (orangeInHouse)
+                        {
+                            if (pbGhostOrange.Left < leftExit && pbGhostOrange.Top == inHouseStartY)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Right;
+                            }
+                            else if (pbGhostOrange.Left == leftExit && pbGhostOrange.Top > waypointsY[3])
+                            {
+                                Settings.GhostOrangeDirection = Directions.Up;
+                            }
+                            else if (pbGhostOrange.Left == leftExit && pbGhostOrange.Top == waypointsY[3])
+                            {
+                                Settings.GhostOrangeDirection = Directions.Left;
+                                scatter = true;
+                                orangeInHouse = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Ghost Left, Right, Up, or Down
 
         public void ghostMoveRD(string ghost)
         {
@@ -1656,7 +1725,6 @@ namespace Pacman
         }
         public void ghostMoveLD(string ghost)
         {
-            int i = rnd.Next(1, 3);
             switch (ghost)
             {
                 case "ghostRed":
@@ -1833,10 +1901,6 @@ namespace Pacman
 
         }
 
-        /// <summary>
-        /// TODO :- Do a formula for the two lower two ghosts, Blue, and Orange to decied if down or LR is better
-        /// </summary>
-        /// <param name="ghost"></param>
         public void ghostMoveLRD(string ghost)
         {
             switch (ghost)
@@ -2216,7 +2280,6 @@ namespace Pacman
 
         #endregion
 
-        #endregion
 
     }
 }

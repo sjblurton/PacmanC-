@@ -31,25 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.player = new System.Windows.Forms.PictureBox();
-            this.playTimerR = new System.Windows.Forms.Timer(this.components);
-            this.playTimerL = new System.Windows.Forms.Timer(this.components);
-            this.playTimerU = new System.Windows.Forms.Timer(this.components);
-            this.playTimerD = new System.Windows.Forms.Timer(this.components);
             this.findPlayerEngineTimer = new System.Windows.Forms.Timer(this.components);
-            this.collectingPoints = new System.Windows.Forms.Timer(this.components);
             this.lbScore = new System.Windows.Forms.Label();
             this.pbGhostRed = new System.Windows.Forms.PictureBox();
-            this.redTimer = new System.Windows.Forms.Timer(this.components);
-            this.redMovmentTimer = new System.Windows.Forms.Timer(this.components);
+            this.ghostTimer = new System.Windows.Forms.Timer(this.components);
             this.pbGhostPink = new System.Windows.Forms.PictureBox();
-            this.pinkTimer = new System.Windows.Forms.Timer(this.components);
-            this.pinkMovmentTimer = new System.Windows.Forms.Timer(this.components);
             this.pbGhostBlue = new System.Windows.Forms.PictureBox();
-            this.blueTimer = new System.Windows.Forms.Timer(this.components);
-            this.blueMovmentTimer = new System.Windows.Forms.Timer(this.components);
             this.pbGhostOrange = new System.Windows.Forms.PictureBox();
-            this.orangeTimer = new System.Windows.Forms.Timer(this.components);
-            this.orangeMovmentTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostPink)).BeginInit();
@@ -61,44 +49,18 @@
             // 
             this.player.BackColor = System.Drawing.Color.Transparent;
             this.player.Image = ((System.Drawing.Image)(resources.GetObject("player.Image")));
-            this.player.Location = new System.Drawing.Point(225, 375);
+            this.player.Location = new System.Drawing.Point(226, 376);
             this.player.Name = "player";
             this.player.Size = new System.Drawing.Size(22, 22);
             this.player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.player.TabIndex = 0;
             this.player.TabStop = false;
             // 
-            // playTimerR
-            // 
-            this.playTimerR.Interval = 1;
-            this.playTimerR.Tick += new System.EventHandler(this.playTmerR_Tick);
-            // 
-            // playTimerL
-            // 
-            this.playTimerL.Interval = 1;
-            this.playTimerL.Tick += new System.EventHandler(this.playTimerL_Tick);
-            // 
-            // playTimerU
-            // 
-            this.playTimerU.Interval = 1;
-            this.playTimerU.Tick += new System.EventHandler(this.playTimerU_Tick);
-            // 
-            // playTimerD
-            // 
-            this.playTimerD.Interval = 1;
-            this.playTimerD.Tick += new System.EventHandler(this.playTimerD_Tick);
-            // 
             // findPlayerEngineTimer
             // 
             this.findPlayerEngineTimer.Enabled = true;
-            this.findPlayerEngineTimer.Interval = 1;
+            this.findPlayerEngineTimer.Interval = 25;
             this.findPlayerEngineTimer.Tick += new System.EventHandler(this.gameEngineTimer_Tick);
-            // 
-            // collectingPoints
-            // 
-            this.collectingPoints.Enabled = true;
-            this.collectingPoints.Interval = 150;
-            this.collectingPoints.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // lbScore
             // 
@@ -122,83 +84,41 @@
             this.pbGhostRed.TabIndex = 2;
             this.pbGhostRed.TabStop = false;
             // 
-            // redTimer
+            // ghostTimer
             // 
-            this.redTimer.Enabled = true;
-            this.redTimer.Interval = 25;
-            this.redTimer.Tick += new System.EventHandler(this.redTimer_Tick);
-            // 
-            // redMovmentTimer
-            // 
-            this.redMovmentTimer.Enabled = true;
-            this.redMovmentTimer.Interval = 25;
-            this.redMovmentTimer.Tick += new System.EventHandler(this.redMovmenTimer_Tick);
+            this.ghostTimer.Enabled = true;
+            this.ghostTimer.Interval = 25;
+            this.ghostTimer.Tick += new System.EventHandler(this.ghostTimer_Tick);
             // 
             // pbGhostPink
             // 
             this.pbGhostPink.Image = global::Pacman.Properties.Resources.GPD;
-            this.pbGhostPink.Location = new System.Drawing.Point(215, 230);
+            this.pbGhostPink.Location = new System.Drawing.Point(214, 230);
             this.pbGhostPink.Name = "pbGhostPink";
             this.pbGhostPink.Size = new System.Drawing.Size(18, 20);
             this.pbGhostPink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbGhostPink.TabIndex = 3;
             this.pbGhostPink.TabStop = false;
             // 
-            // pinkTimer
-            // 
-            this.pinkTimer.Enabled = true;
-            this.pinkTimer.Interval = 25;
-            this.pinkTimer.Tick += new System.EventHandler(this.pinkTimer_Tick);
-            // 
-            // pinkMovmentTimer
-            // 
-            this.pinkMovmentTimer.Enabled = true;
-            this.pinkMovmentTimer.Interval = 25;
-            this.pinkMovmentTimer.Tick += new System.EventHandler(this.pinkMovmentTimer_Tick);
-            // 
             // pbGhostBlue
             // 
             this.pbGhostBlue.Image = global::Pacman.Properties.Resources.GBD;
-            this.pbGhostBlue.Location = new System.Drawing.Point(263, 230);
+            this.pbGhostBlue.Location = new System.Drawing.Point(264, 230);
             this.pbGhostBlue.Name = "pbGhostBlue";
             this.pbGhostBlue.Size = new System.Drawing.Size(18, 20);
             this.pbGhostBlue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbGhostBlue.TabIndex = 4;
             this.pbGhostBlue.TabStop = false;
             // 
-            // blueTimer
-            // 
-            this.blueTimer.Enabled = true;
-            this.blueTimer.Interval = 25;
-            this.blueTimer.Tick += new System.EventHandler(this.blueTimer_Tick);
-            // 
-            // blueMovmentTimer
-            // 
-            this.blueMovmentTimer.Enabled = true;
-            this.blueMovmentTimer.Interval = 25;
-            this.blueMovmentTimer.Tick += new System.EventHandler(this.blueMovmentTimer_Tick);
-            // 
             // pbGhostOrange
             // 
             this.pbGhostOrange.Image = global::Pacman.Properties.Resources.GOD;
-            this.pbGhostOrange.Location = new System.Drawing.Point(191, 230);
+            this.pbGhostOrange.Location = new System.Drawing.Point(190, 230);
             this.pbGhostOrange.Name = "pbGhostOrange";
             this.pbGhostOrange.Size = new System.Drawing.Size(18, 20);
             this.pbGhostOrange.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbGhostOrange.TabIndex = 5;
             this.pbGhostOrange.TabStop = false;
-            // 
-            // orangeTimer
-            // 
-            this.orangeTimer.Enabled = true;
-            this.orangeTimer.Interval = 25;
-            this.orangeTimer.Tick += new System.EventHandler(this.orangeTimer_Tick);
-            // 
-            // orangeMovmentTimer
-            // 
-            this.orangeMovmentTimer.Enabled = true;
-            this.orangeMovmentTimer.Interval = 25;
-            this.orangeMovmentTimer.Tick += new System.EventHandler(this.orangeMovmentTimer_Tick);
             // 
             // Form1
             // 
@@ -221,7 +141,6 @@
             this.Text = "Pacman";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyIsDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyIsUp);
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostRed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostPink)).EndInit();
@@ -235,25 +154,13 @@
         #endregion
 
         private System.Windows.Forms.PictureBox player;
-        private System.Windows.Forms.Timer playTimerR;
-        private System.Windows.Forms.Timer playTimerL;
-        private System.Windows.Forms.Timer playTimerU;
-        private System.Windows.Forms.Timer playTimerD;
         private System.Windows.Forms.Timer findPlayerEngineTimer;
-        private System.Windows.Forms.Timer collectingPoints;
         private System.Windows.Forms.Label lbScore;
         private System.Windows.Forms.PictureBox pbGhostRed;
-        private System.Windows.Forms.Timer redTimer;
-        private System.Windows.Forms.Timer redMovmentTimer;
+        private System.Windows.Forms.Timer ghostTimer;
         private System.Windows.Forms.PictureBox pbGhostPink;
-        private System.Windows.Forms.Timer pinkTimer;
-        private System.Windows.Forms.Timer pinkMovmentTimer;
         private System.Windows.Forms.PictureBox pbGhostBlue;
-        private System.Windows.Forms.Timer blueTimer;
-        private System.Windows.Forms.Timer blueMovmentTimer;
         private System.Windows.Forms.PictureBox pbGhostOrange;
-        private System.Windows.Forms.Timer orangeTimer;
-        private System.Windows.Forms.Timer orangeMovmentTimer;
     }
 }
 

@@ -47,10 +47,14 @@
             this.pbGhostBlue = new System.Windows.Forms.PictureBox();
             this.blueTimer = new System.Windows.Forms.Timer(this.components);
             this.blueMovmentTimer = new System.Windows.Forms.Timer(this.components);
+            this.pbGhostOrange = new System.Windows.Forms.PictureBox();
+            this.orangeTimer = new System.Windows.Forms.Timer(this.components);
+            this.orangeMovmentTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostPink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostBlue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGhostOrange)).BeginInit();
             this.SuspendLayout();
             // 
             // player
@@ -174,6 +178,28 @@
             this.blueMovmentTimer.Interval = 25;
             this.blueMovmentTimer.Tick += new System.EventHandler(this.blueMovmentTimer_Tick);
             // 
+            // pbGhostOrange
+            // 
+            this.pbGhostOrange.Image = global::Pacman.Properties.Resources.GOD;
+            this.pbGhostOrange.Location = new System.Drawing.Point(191, 230);
+            this.pbGhostOrange.Name = "pbGhostOrange";
+            this.pbGhostOrange.Size = new System.Drawing.Size(18, 20);
+            this.pbGhostOrange.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbGhostOrange.TabIndex = 5;
+            this.pbGhostOrange.TabStop = false;
+            // 
+            // orangeTimer
+            // 
+            this.orangeTimer.Enabled = true;
+            this.orangeTimer.Interval = 25;
+            this.orangeTimer.Tick += new System.EventHandler(this.orangeTimer_Tick);
+            // 
+            // orangeMovmentTimer
+            // 
+            this.orangeMovmentTimer.Enabled = true;
+            this.orangeMovmentTimer.Interval = 25;
+            this.orangeMovmentTimer.Tick += new System.EventHandler(this.orangeMovmentTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -182,6 +208,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(470, 514);
+            this.Controls.Add(this.pbGhostOrange);
             this.Controls.Add(this.pbGhostBlue);
             this.Controls.Add(this.pbGhostPink);
             this.Controls.Add(this.pbGhostRed);
@@ -199,6 +226,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostRed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostPink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostBlue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGhostOrange)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,6 +251,9 @@
         private System.Windows.Forms.PictureBox pbGhostBlue;
         private System.Windows.Forms.Timer blueTimer;
         private System.Windows.Forms.Timer blueMovmentTimer;
+        private System.Windows.Forms.PictureBox pbGhostOrange;
+        private System.Windows.Forms.Timer orangeTimer;
+        private System.Windows.Forms.Timer orangeMovmentTimer;
     }
 }
 

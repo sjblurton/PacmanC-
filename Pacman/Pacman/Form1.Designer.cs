@@ -59,7 +59,7 @@
             // findPlayerEngineTimer
             // 
             this.findPlayerEngineTimer.Enabled = true;
-            this.findPlayerEngineTimer.Interval = 25;
+            this.findPlayerEngineTimer.Interval = 75;
             this.findPlayerEngineTimer.Tick += new System.EventHandler(this.gameEngineTimer_Tick);
             // 
             // lbScore
@@ -87,7 +87,7 @@
             // ghostTimer
             // 
             this.ghostTimer.Enabled = true;
-            this.ghostTimer.Interval = 25;
+            this.ghostTimer.Interval = 75;
             this.ghostTimer.Tick += new System.EventHandler(this.ghostTimer_Tick);
             // 
             // pbGhostPink

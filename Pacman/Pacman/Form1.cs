@@ -15,9 +15,9 @@ namespace Pacman
 
         #region Veribles
 
-        int[] waypointsX = new int[10] { 24, 52, 104, 152, 200, 248, 294, 342, 392, 422 };
-        int[] waypointsY = new int[] { 20, 86, 134, 180, 230, 280, 326, 376, 420, 470 };
-        int PlayerSpeed = 2;
+        int[] waypointsX = new int[10] { 24, 52, 104, 152, 200, 248, 296, 344, 392, 424 };
+        int[] waypointsY = new int[] { 20, 88, 136, 180, 232, 280, 328, 376, 420, 472 };
+        int PlayerSpeed = 4;
         int score = 0;
 
         #endregion
@@ -38,10 +38,11 @@ namespace Pacman
         private void gameEngineTimer_Tick(object sender, EventArgs e)
         {
             CollectingPoints();
+            PlayerWhichWaypoint();
 
             if (Settings.playerDirection == Directions.Left || Settings.playerDirection == Directions.Right)
             {
-                playerRightLeftMovment();
+                PlayerRightLeftMovment();
             }
             else if (Settings.playerDirection == Directions.Up || Settings.playerDirection == Directions.Down)
             {
@@ -65,8 +66,6 @@ namespace Pacman
                 keyDown = false;
                 keyRight = false;
                 keyLeft = false;
-                if (keyUp)
-                    player.Image = Properties.Resources.PlayerU;
             }
             if (e.KeyCode == Keys.Down)
             {
@@ -75,8 +74,6 @@ namespace Pacman
                 keyDown = true;
                 keyRight = false;
                 keyLeft = false;
-                if (keyDown)
-                    player.Image = Properties.Resources.PlayerD;
 
             }
             if (e.KeyCode == Keys.Left)
@@ -86,8 +83,6 @@ namespace Pacman
                 keyDown = false;
                 keyRight = false;
                 keyLeft = true;
-                if (keyLeft)
-                    player.Image = Properties.Resources.PlayerL;
             }
             if (e.KeyCode == Keys.Right)
             {
@@ -168,7 +163,7 @@ namespace Pacman
             else if (((player.Left == waypointsX[3]) || (player.Left == waypointsX[6]))
                 && ((player.Top > waypointsY[1] && player.Top < waypointsX[3])
                 || (player.Top > waypointsY[1] && player.Top < waypointsY[6])
-                ||(player.Top > waypointsY[3] && player.Top < waypointsY[4])
+                || (player.Top > waypointsY[3] && player.Top < waypointsY[4])
                 || (player.Top > waypointsY[4] && player.Top < waypointsY[5])
                 || (player.Top > waypointsY[5] && player.Top < waypointsY[6])
                 || (player.Top > waypointsY[7] && player.Top < waypointsY[8])))
@@ -188,7 +183,7 @@ namespace Pacman
 
         }
 
-        private void playerRightLeftMovment()
+        private void PlayerRightLeftMovment()
         {
             //checking if player is inbetween waypoints
             //Row Y 9 left to right
@@ -249,7 +244,7 @@ namespace Pacman
                 && ((player.Left > waypointsX[2] && player.Left < waypointsX[3])
                 || (player.Left > -20 && player.Left < waypointsX[2]) //the cross over
                 || (player.Left > waypointsX[6] && player.Left < waypointsX[7])
-                || (player.Left > waypointsX[7] && player.Left < 470))) //the cross over
+                || (player.Left > waypointsX[7] && player.Left < 472))) //the cross over
             {
                 MovePlayerLR();
 
@@ -298,14 +293,14 @@ namespace Pacman
             }
 
             // The Cross over left to right
-            else if (((player.Top == waypointsY[4]) && (player.Left == -20)) && (Settings.playerDirection == Directions.Left))
+            else if (((player.Top == waypointsY[4]) && (player.Left == -20)))
             {
-                player.Left = 470;
+                player.Left = 468;
             }
             // The Cross over left to right
-            else if (((player.Top == waypointsY[4]) && (player.Left == 470)) && (Settings.playerDirection == Directions.Right))
+            else if (((player.Top == waypointsY[4]) && (player.Left == 472)))
             {
-                player.Left = -20;
+                player.Left = -16;
 
             }
             else PlayerWhichWaypoint();
@@ -477,7 +472,7 @@ namespace Pacman
             }
             else
                 PlayerMovmentStop();
-       }
+        }
         public void MovePlayerLRD()
         {
             PlayerMovmentStop();
@@ -672,12 +667,12 @@ namespace Pacman
 
             int AStart = 50, AStop = 110, BStart = 130, BStop = 210,
                 CStart = 170, CStop = 215, DStart = 130, DStop = 345,
-                EStart= 270, EStop= 310, FStart = 270, FStop = 360,
+                EStart = 270, EStop = 310, FStart = 270, FStop = 360,
                 GStart = 370, GStop = 430;
 
             Circles bigOne1 = new Circles();
-            bigOne1.coinLeft =31;
-            bigOne1.coinTop = Y[7]-10;
+            bigOne1.coinLeft = 31;
+            bigOne1.coinTop = Y[7] - 10;
             bigOne1.mkBig(this);
             Circles bigOne2 = new Circles();
             bigOne2.coinLeft = 31;
@@ -685,7 +680,7 @@ namespace Pacman
             bigOne2.mkBig(this);
             Circles bigOne3 = new Circles();
             bigOne3.coinLeft = 426;
-            bigOne3.coinTop = Y[7] -10;
+            bigOne3.coinTop = Y[7] - 10;
             bigOne3.mkBig(this);
             Circles bigOne4 = new Circles();
             bigOne4.coinLeft = 426;
@@ -694,14 +689,14 @@ namespace Pacman
 
 
             //row 0
-            for (int i = AStart; i < AStop; i+=spacing)
+            for (int i = AStart; i < AStop; i += spacing)
             {
-                    Circles coin = new Circles();
-                    coin.coinLeft = i ;
-                    coin.coinTop = Y[0];
-                    coin.mkCoin(this);
+                Circles coin = new Circles();
+                coin.coinLeft = i;
+                coin.coinTop = Y[0];
+                coin.mkCoin(this);
             }
-            
+
             for (int i = BStart; i < BStop; i += spacing)
             {
                 Circles coin = new Circles();
@@ -860,10 +855,10 @@ namespace Pacman
                 coin.mkCoin(this);
             }
             //columns
-            int Y1Start=430, Y1Stop=480, Y2Start = 335, Y2Stop =385,
-                Y3Start = 380,Y3Stop= 420, Y4Start= 400,Y4Stop=430,
-                Y5Start= 30,Y5Stop = 430, Y6Start= 30,Y6Stop = 140,
-                Y7Start=110,Y7Stop=140, Y8Start = 30, Y8Stop = 85;
+            int Y1Start = 430, Y1Stop = 480, Y2Start = 335, Y2Stop = 385,
+                Y3Start = 380, Y3Stop = 420, Y4Start = 400, Y4Stop = 430,
+                Y5Start = 30, Y5Stop = 430, Y6Start = 30, Y6Stop = 140,
+                Y7Start = 110, Y7Stop = 140, Y8Start = 30, Y8Stop = 85;
             int[] X = new int[] { 35, 60, 113, 160, 211, 255, 305, 355, 400, 430 };
 
             //column 0
@@ -1045,17 +1040,52 @@ namespace Pacman
                             score += 10;
                             this.Controls.Remove(j);
                             j.Dispose();
-                            if (coinCount == 254)
+                            if (coinCount == 252)
                                 youWin = true;
                         }
                     }
                 }
+                foreach (Control j in this.Controls)
+                {//to identify coins to collect
+                    if ((j is PictureBox && j.Tag == "big"))
+                    {
+                        if (player.Bounds.IntersectsWith(j.Bounds))
+                        {
+
+                            this.Controls.Remove(j);
+                            j.Dispose();
+                            BigDot();
+                        }
+                    }
+                }
+
 
             }
             if (youWin)
             {
                 YouWin();
             }
+        }
+
+        private void BigDot()
+        {
+            redScatter = false; pinkScatter = false; orangeScatter = false; blueScatter = false;
+            redFrightend = true; pinkFrightend = true; orangeFrightend = true; blueFrightend = true;
+            frightenedTimer.Start();
+            ghostTimer.Interval = 300;
+            pbGhostRed.Image = Properties.Resources.crazy;
+            pbGhostPink.Image = Properties.Resources.crazy;
+            pbGhostOrange.Image = Properties.Resources.crazy;
+            pbGhostBlue.Image = Properties.Resources.crazy;
+            pbGhostRed.Tag = "frightend";
+            pbGhostPink.Tag = "frightend";
+            pbGhostOrange.Tag = "frightend";
+            pbGhostBlue.Tag = "frightend";
+            RedGhost360();
+            PinkGhost360();
+            OrangeGhost360();
+            BlueGhost360();
+
         }
 
         private void YouWin()
@@ -1068,52 +1098,125 @@ namespace Pacman
         #endregion
 
         #region Ghost Timers
+
         bool chase = false;
-        bool scatter = false;
-        bool frightened = false;
-        bool dead = false;
-        bool redInHouse = true;
-        bool pinkInHouse = true;
-        bool blueInHouse = true;
-        bool orangeInHouse = true;
+        bool redScatter = false, pinkScatter = false, orangeScatter = false, blueScatter = false;
+        bool redInHouse = true, pinkInHouse = true, blueInHouse = true, orangeInHouse = true;
+        bool redFrightend = false, pinkFrightend = false, orangeFrightend = false, blueFrightend = false;
+        bool redDead = false, pinkDead = false, orangeDead = false, blueDead = false;
+
         int ghostSpeed = 2;
+        int fearSpeed = 2;
 
 
         private void ghostTimer_Tick(object sender, EventArgs e)
         {
-
-            RedMovmentMethod();
-
-            PinkMovmentMethod();
-
-            BlueMovmentMethod();
-
-            OrangeMovmentMethod();
-
-            if (redInHouse || pinkInHouse || blueInHouse || orangeInHouse)
+            if (redInHouse)
             {
+                RedMovmentMethod();
                 GhostsInHouse();
             }
-            if (!redInHouse && scatter)
+            if (pinkInHouse)
             {
-                    GhostAtWaypointTrue("redGhost");
-                    ghostScatter("redScatter");
+                PinkMovmentMethod();
+                GhostsInHouse();
             }
-            if (!pinkInHouse && scatter)
+            if (orangeInHouse)
             {
-                    GhostAtWaypointTrue("pinkGhost");
-                    ghostScatter("pinkScatter");
+                OrangeMovmentMethod();
+                GhostsInHouse();
             }
-            if (!blueInHouse && scatter)
+            if (blueInHouse)
             {
-                    GhostAtWaypointTrue("blueGhost");
-                    ghostScatter("blueScatter");
+                BlueMovmentMethod();
+                GhostsInHouse();
             }
-            if (!orangeInHouse && scatter)
+
+
+            if (redScatter && !redFrightend)
             {
-                    GhostAtWaypointTrue("orangeGhost");
-                    ghostScatter("orangeScatter");
+                RedMovmentMethod();
+                GhostAtWaypointTrue("ghostRed");
+                ghostScatter("ghostRed");
             }
+            if (pinkScatter&& !pinkFrightend)
+            {
+                PinkMovmentMethod();
+                GhostAtWaypointTrue("ghostPink");
+                ghostScatter("ghostPink");
+            }
+            if (orangeScatter && !orangeFrightend)
+            {
+                OrangeMovmentMethod();
+                GhostAtWaypointTrue("ghostOrange");
+                ghostScatter("ghostOrange");
+            }
+            if (blueScatter && !blueFrightend)
+            {
+                BlueMovmentMethod();
+                GhostAtWaypointTrue("ghostBlue");
+                ghostScatter("ghostBlue");
+            }
+
+
+            if (redFrightend && !redInHouse)
+            {
+                RedMovmentFear();
+                GhostAtWaypointTrue("ghostRed");
+                GhostFrightendMovement("ghostRed");
+            }
+            if (pinkFrightend && !pinkInHouse)
+            {
+                PinkMovmentFear();
+                GhostAtWaypointTrue("ghostPink");
+                GhostFrightendMovement("ghostPink");
+            }
+            if (orangeFrightend && !orangeInHouse)
+            {
+                OrangeMovmentFear();
+                GhostAtWaypointTrue("ghostOrange");
+                GhostFrightendMovement("ghostOrange");
+            }
+            if (blueFrightend && !blueInHouse)
+            {
+                BlueMovmentFear();
+                GhostAtWaypointTrue("ghostBlue");
+                GhostFrightendMovement("ghostBlue");
+            }
+
+
+
+        }
+
+
+        private void frightenedTimer_Tick(object sender, EventArgs e)
+        {
+            frightenedTimer.Stop();
+
+
+            if (redFrightend)
+                pbGhostRed.Image = Properties.Resources.Gtemp;
+            if (pinkFrightend)
+                pbGhostPink.Image = Properties.Resources.Gtemp;
+            if (orangeFrightend)
+                pbGhostOrange.Image = Properties.Resources.Gtemp;
+            if (blueFrightend)
+                pbGhostBlue.Image = Properties.Resources.Gtemp;
+
+
+            warningTimer.Start();
+        }
+
+        private void warningTimer_Tick(object sender, EventArgs e)
+        {
+            warningTimer.Stop();
+            pbGhostRed.Tag = "ghost";
+            pbGhostPink.Tag = "ghost";
+            pbGhostOrange.Tag = "ghost";
+            pbGhostBlue.Tag = "ghost";
+            redFrightend = false; pinkFrightend = false; orangeFrightend = false; blueFrightend = false;
+            redScatter = true; pinkScatter = true; orangeScatter = true; blueScatter = true;
+            ghostTimer.Interval = 150;
 
 
         }
@@ -1121,7 +1224,133 @@ namespace Pacman
 
         #endregion
 
+        #region 360 methods
+
+        private void RedGhost360()
+        {
+            redMoveRD = false; redMoveLD = false; redMoveLU = false; redMoveRU = false;
+            redMoveLRD = false; redMoveRUD = false; redMoveLRU = false; redMoveLUD = false; redMoveLRUD = false;
+
+            if (Settings.GhostRedDirection == Directions.Down)
+                Settings.GhostRedDirection = Directions.Up;
+            else if (Settings.GhostRedDirection == Directions.Up)
+                Settings.GhostRedDirection = Directions.Down;
+            else if (Settings.GhostRedDirection == Directions.Left)
+                Settings.GhostRedDirection = Directions.Right;
+            else if (Settings.GhostRedDirection == Directions.Right)
+                Settings.GhostRedDirection = Directions.Left;
+            GhostAtWaypointTrue("ghostRed");
+
+        }
+        private void PinkGhost360()
+        {
+            pinkMoveRD = false; pinkMoveLD = false; pinkMoveLU = false; pinkMoveRU = false;
+            pinkMoveLRD = false; pinkMoveRUD = false; pinkMoveLRU = false; pinkMoveLUD = false; pinkMoveLRUD = false;
+            if (Settings.GhostPinkDirection == Directions.Down)
+                Settings.GhostPinkDirection = Directions.Up;
+            else if (Settings.GhostPinkDirection == Directions.Up)
+                Settings.GhostPinkDirection = Directions.Down;
+            else if (Settings.GhostPinkDirection == Directions.Left)
+                Settings.GhostPinkDirection = Directions.Right;
+            else if (Settings.GhostPinkDirection == Directions.Right)
+                Settings.GhostPinkDirection = Directions.Left;
+            GhostAtWaypointTrue("ghostPink");
+
+        }
+        private void OrangeGhost360()
+        {
+            orangeMoveRD = false; orangeMoveLD = false; orangeMoveLU = false; orangeMoveRU = false;
+            orangeMoveLRD = false; orangeMoveRUD = false; orangeMoveLRU = false; orangeMoveLUD = false; orangeMoveLRUD = false;
+            if (Settings.GhostOrangeDirection == Directions.Down)
+                Settings.GhostOrangeDirection = Directions.Up;
+            else if (Settings.GhostOrangeDirection == Directions.Up)
+                Settings.GhostOrangeDirection = Directions.Down;
+            else if (Settings.GhostOrangeDirection == Directions.Left)
+                Settings.GhostOrangeDirection = Directions.Right;
+            else if (Settings.GhostOrangeDirection == Directions.Right)
+                Settings.GhostOrangeDirection = Directions.Left;
+            GhostAtWaypointTrue("ghostOrange");
+
+        }
+        private void BlueGhost360()
+        {
+            blueMoveRD = false; blueMoveLD = false; blueMoveLU = false; blueMoveRU = false;
+            blueMoveLRD = false; blueMoveRUD = false; blueMoveLRU = false; blueMoveLUD = false; blueMoveLRUD = false;
+            if (Settings.GhostBlueDirection == Directions.Down)
+                Settings.GhostBlueDirection = Directions.Up;
+            else if (Settings.GhostBlueDirection == Directions.Up)
+                Settings.GhostBlueDirection = Directions.Down;
+            else if (Settings.GhostBlueDirection == Directions.Left)
+                Settings.GhostBlueDirection = Directions.Right;
+            else if (Settings.GhostBlueDirection == Directions.Right)
+                Settings.GhostBlueDirection = Directions.Left;
+            GhostAtWaypointTrue("ghostBlue");
+        }
+
+        #endregion
+
         #region Ghost Movment Methods
+        private void RedMovmentMethod()
+        {
+            if (Settings.GhostRedDirection == Directions.Up)
+            {
+                pbGhostRed.Image = Properties.Resources.GRU;
+                pbGhostRed.Top -= ghostSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Down)
+            {
+                pbGhostRed.Image = Properties.Resources.GRD;
+                pbGhostRed.Top += ghostSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Left)
+            {
+                pbGhostRed.Image = Properties.Resources.GRL;
+                pbGhostRed.Left -= ghostSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Right)
+            {
+                pbGhostRed.Image = Properties.Resources.GRR;
+                pbGhostRed.Left += ghostSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Stop)
+            {
+                pbGhostRed.Image = Properties.Resources.GRD;
+                pbGhostRed.Left += 0;
+                pbGhostRed.Top += 0;
+            }
+        }
+
+        private void PinkMovmentMethod()
+        {
+            if (Settings.GhostPinkDirection == Directions.Up)
+            {
+                pbGhostPink.Image = Properties.Resources.GPU;
+                pbGhostPink.Top -= ghostSpeed;
+            }
+            else if (Settings.GhostPinkDirection == Directions.Down)
+            {
+                pbGhostPink.Image = Properties.Resources.GPD;
+                pbGhostPink.Top += ghostSpeed;
+            }
+            else if (Settings.GhostPinkDirection == Directions.Left)
+            {
+                pbGhostPink.Image = Properties.Resources.GPL;
+                pbGhostPink.Left -= ghostSpeed;
+            }
+            else if (Settings.GhostPinkDirection == Directions.Right)
+            {
+                pbGhostPink.Image = Properties.Resources.GPR;
+                pbGhostPink.Left += ghostSpeed;
+            }
+            else if (Settings.GhostPinkDirection == Directions.Stop)
+            {
+                pbGhostPink.Image = Properties.Resources.GPD;
+                pbGhostPink.Left += 0;
+                pbGhostPink.Top += 0;
+
+            }
+        }
+
         private void OrangeMovmentMethod()
         {
             if (Settings.GhostOrangeDirection == Directions.Up)
@@ -1184,66 +1413,111 @@ namespace Pacman
             }
         }
 
-        private void PinkMovmentMethod()
+        private void RedMovmentFear()
+        {
+            if (Settings.GhostRedDirection == Directions.Up)
+            {
+                pbGhostRed.Top -= fearSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Down)
+            {
+                pbGhostRed.Top += fearSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Left)
+            {
+                pbGhostRed.Left -= fearSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Right)
+            {
+                pbGhostRed.Left += fearSpeed;
+            }
+            else if (Settings.GhostRedDirection == Directions.Stop)
+            {
+                pbGhostRed.Left += 0;
+                pbGhostRed.Top += 0;
+            }
+        }
+
+        private void PinkMovmentFear()
         {
             if (Settings.GhostPinkDirection == Directions.Up)
             {
-                pbGhostPink.Image = Properties.Resources.GPU;
-                pbGhostPink.Top -= ghostSpeed;
+                pbGhostPink.Top -= fearSpeed;
             }
             else if (Settings.GhostPinkDirection == Directions.Down)
             {
-                pbGhostPink.Image = Properties.Resources.GPD;
-                pbGhostPink.Top += ghostSpeed;
+                pbGhostPink.Top += fearSpeed;
             }
             else if (Settings.GhostPinkDirection == Directions.Left)
             {
-                pbGhostPink.Image = Properties.Resources.GPL;
-                pbGhostPink.Left -= ghostSpeed;
+                pbGhostPink.Left -= fearSpeed;
             }
             else if (Settings.GhostPinkDirection == Directions.Right)
             {
-                pbGhostPink.Image = Properties.Resources.GPR;
-                pbGhostPink.Left += ghostSpeed;
+                pbGhostPink.Left += fearSpeed;
             }
             else if (Settings.GhostPinkDirection == Directions.Stop)
             {
-                pbGhostPink.Image = Properties.Resources.GPD;
                 pbGhostPink.Left += 0;
                 pbGhostPink.Top += 0;
 
             }
         }
 
-        private void RedMovmentMethod()
+
+        private void OrangeMovmentFear()
         {
-            if (Settings.GhostRedDirection == Directions.Up)
+            if (Settings.GhostOrangeDirection == Directions.Up)
             {
-                pbGhostRed.Image = Properties.Resources.GRU;
-                pbGhostRed.Top -= ghostSpeed;
+                pbGhostOrange.Top -= fearSpeed;
             }
-            else if (Settings.GhostRedDirection == Directions.Down)
+            else if (Settings.GhostOrangeDirection == Directions.Down)
             {
-                pbGhostRed.Image = Properties.Resources.GRD;
-                pbGhostRed.Top += ghostSpeed;
+                pbGhostOrange.Top += fearSpeed;
             }
-            else if (Settings.GhostRedDirection == Directions.Left)
+            else if (Settings.GhostOrangeDirection == Directions.Left)
             {
-                pbGhostRed.Image = Properties.Resources.GRL;
-                pbGhostRed.Left -= ghostSpeed;
+                pbGhostOrange.Left -= fearSpeed;
             }
-            else if (Settings.GhostRedDirection == Directions.Right)
+            else if (Settings.GhostOrangeDirection == Directions.Right)
             {
-                pbGhostRed.Image = Properties.Resources.GRR;
-                pbGhostRed.Left += ghostSpeed;
+                pbGhostOrange.Left += fearSpeed;
             }
-            else if (Settings.GhostRedDirection == Directions.Stop)
+            else if (Settings.GhostOrangeDirection == Directions.Stop)
             {
-                pbGhostRed.Image = Properties.Resources.GRD;
-                pbGhostRed.Left += 0;
-                pbGhostRed.Top += 0;
+                pbGhostOrange.Left += 0;
+                pbGhostOrange.Top += 0;
+
             }
         }
+
+        private void BlueMovmentFear()
+        {
+            if (Settings.GhostBlueDirection == Directions.Up)
+            {
+                pbGhostBlue.Top -= fearSpeed;
+            }
+            else if (Settings.GhostBlueDirection == Directions.Down)
+            {
+                pbGhostBlue.Top += fearSpeed;
+            }
+            else if (Settings.GhostBlueDirection == Directions.Left)
+            {
+                pbGhostBlue.Left -= fearSpeed;
+            }
+            else if (Settings.GhostBlueDirection == Directions.Right)
+            {
+                pbGhostBlue.Left += fearSpeed;
+            }
+            else if (Settings.GhostBlueDirection == Directions.Stop)
+            {
+                pbGhostBlue.Left += 0;
+                pbGhostBlue.Top += 0;
+
+            }
+        }
+
+
         #endregion
 
         #region GhostAtWaypointTrue
@@ -1255,8 +1529,10 @@ namespace Pacman
         bool pinkMoveRD = false, pinkMoveLD = false, pinkMoveLU = false, pinkMoveRU = false,
             pinkMoveLRD = false, pinkMoveRUD = false, pinkMoveLRU = false, pinkMoveLUD = false, pinkMoveLRUD = false;
 
+
         bool blueMoveRD = false, blueMoveLD = false, blueMoveLU = false, blueMoveRU = false,
             blueMoveLRD = false, blueMoveRUD = false, blueMoveLRU = false, blueMoveLUD = false, blueMoveLRUD = false;
+
 
         bool orangeMoveRD = false, orangeMoveLD = false, orangeMoveLU = false, orangeMoveRU = false,
             orangeMoveLRD = false, orangeMoveRUD = false, orangeMoveLRU = false, orangeMoveLUD = false, orangeMoveLRUD = false;
@@ -1266,7 +1542,7 @@ namespace Pacman
         {
             switch (ghost)
             {
-                case "redGhost":
+                case "ghostRed":
                     //checking the which waypoint
                     //RD
                     if ((pbGhostRed.Top == waypointsY[0] && pbGhostRed.Left == waypointsX[0])
@@ -1334,7 +1610,7 @@ namespace Pacman
                                   || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[3]))
                     {
                         redMoveLRD = true;
-                        redMoveRD = false; redMoveLD = false; redMoveLU = false; redMoveRU = false; 
+                        redMoveRD = false; redMoveLD = false; redMoveLU = false; redMoveRU = false;
                         redMoveRUD = false; redMoveLRU = false; redMoveLUD = false; redMoveLRUD = false;
 
                     }
@@ -1347,17 +1623,14 @@ namespace Pacman
                     {
                         redMoveRUD = true;
                         redMoveRD = false; redMoveLD = false; redMoveLU = false; redMoveRU = false; redMoveLRD = false;
-                         redMoveLRU = false; redMoveLUD = false; redMoveLRUD = false;
+                        redMoveLRU = false; redMoveLUD = false; redMoveLRUD = false;
 
                     }
                     //LRU
                     else if ((pbGhostRed.Top == waypointsY[1] && pbGhostRed.Left == waypointsX[4])
                                   || (pbGhostRed.Top == waypointsY[1] && pbGhostRed.Left == waypointsX[5])
-                                  || (pbGhostRed.Top == waypointsY[3] && pbGhostRed.Left == waypointsX[4])
                                   || (pbGhostRed.Top == waypointsY[6] && pbGhostRed.Left == waypointsX[3])
                                   || (pbGhostRed.Top == waypointsY[6] && pbGhostRed.Left == waypointsX[6])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[4])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[5])
                                   || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[1])
                                   || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[8])
                                   || (pbGhostRed.Top == waypointsY[9] && pbGhostRed.Left == waypointsX[4])
@@ -1394,10 +1667,23 @@ namespace Pacman
                         redMoveRUD = false; redMoveLRU = false; redMoveLUD = false;
 
                     }
+                    else if (((pbGhostRed.Top == waypointsY[4]) && (pbGhostRed.Left == -20)))
+                    {
+                        pbGhostRed.Left = 470;
+                        Settings.GhostRedDirection = Directions.Left;
+                    }
+                    // The Cross over left to right
+                    else if (((pbGhostRed.Top == waypointsY[4]) && (pbGhostRed.Left == 472)))
+                    {
+                        pbGhostRed.Left = -18;
+                        Settings.GhostRedDirection = Directions.Right;
+
+                    }
+
                     break;
 
 
-                case "pinkGhost":
+                case "ghostPink":
                     //checking the which waypoint
                     //RD
                     if ((pbGhostPink.Top == waypointsY[0] && pbGhostPink.Left == waypointsX[0])
@@ -1508,9 +1794,23 @@ namespace Pacman
                         pinkMoveRD = false; pinkMoveLD = false; pinkMoveLU = false; pinkMoveRU = false;
                         pinkMoveLRD = false; pinkMoveRUD = false; pinkMoveLRU = false; pinkMoveLUD = false; pinkMoveLRUD = true;
                     }
+                    else if (((pbGhostPink.Top == waypointsY[4]) && (pbGhostPink.Left == -20)))
+                    {
+                        pbGhostPink.Left = 470;
+                        Settings.GhostPinkDirection = Directions.Left;
+
+                    }
+                    // The Cross over left to right
+                    else if (((pbGhostPink.Top == waypointsY[4]) && (pbGhostPink.Left == 472)))
+                    {
+                        pbGhostPink.Left = -18;
+                        Settings.GhostPinkDirection = Directions.Right;
+
+                    }
+
                     break;
 
-                case "orangeGhost":
+                case "ghostOrange":
                     //checking the which waypoint
                     //RD
                     if ((pbGhostOrange.Top == waypointsY[0] && pbGhostOrange.Left == waypointsX[0])
@@ -1620,11 +1920,25 @@ namespace Pacman
                         orangeMoveRD = false; orangeMoveLD = false; orangeMoveLU = false; orangeMoveRU = false;
                         orangeMoveLRD = false; orangeMoveRUD = false; orangeMoveLRU = false; orangeMoveLUD = false; orangeMoveLRUD = true;
                     }
+                    else if (((pbGhostOrange.Top == waypointsY[4]) && (pbGhostOrange.Left == -20)))
+                    {
+                        pbGhostOrange.Left = 470;
+                        Settings.GhostOrangeDirection = Directions.Left;
+
+                    }
+                    // The Cross over left to right
+                    else if (((pbGhostOrange.Top == waypointsY[4]) && (pbGhostOrange.Left == 472)))
+                    {
+                        pbGhostOrange.Left = -18;
+                        Settings.GhostOrangeDirection = Directions.Right;
+
+                    }
+
                     break;
 
 
 
-                case "blueGhost":
+                case "ghostBlue":
                     //checking the which waypoint
                     //RD
                     if ((pbGhostBlue.Top == waypointsY[0] && pbGhostBlue.Left == waypointsX[0])
@@ -1734,8 +2048,22 @@ namespace Pacman
                         blueMoveRD = false; blueMoveLD = false; blueMoveLU = false; blueMoveRU = false;
                         blueMoveLRD = false; blueMoveRUD = false; blueMoveLRU = false; blueMoveLUD = false; blueMoveLRUD = true;
                     }
+                    else if (((pbGhostBlue.Top == waypointsY[4]) && (pbGhostBlue.Left == -20)))
+                    {
+                        pbGhostBlue.Left = 470;
+                        Settings.GhostBlueDirection = Directions.Left;
+
+                    }
+                    // The Cross over left to right
+                    else if (((pbGhostBlue.Top == waypointsY[4]) && (pbGhostBlue.Left == 472)))
+                    {
+                        pbGhostBlue.Left = -18;
+                        Settings.GhostBlueDirection = Directions.Right;
+
+                    }
+
                     break;
-                    
+
             }
 
 
@@ -1744,14 +2072,13 @@ namespace Pacman
 
         #endregion
 
-
         #region Ghost Scatter
 
         private void ghostScatter(string ghost)
         {
             switch (ghost)
             {
-                case "redScatter":
+                case "ghostRed":
                     //checking the which waypoint
                     //RD
                     if (redMoveRD)
@@ -1771,37 +2098,37 @@ namespace Pacman
                     //RU
                     else if (redMoveRU)
                     {
-                        ghostMoveRU("ghostRedScatter");
+                        ghostMoveRU("ghostRed");
                     }
                     //LRD
                     else if (redMoveLRD)
                     {
-                        ghostMoveLRD("ghostRedScatter");
+                        GhostScatterLRD("ghostRed");
                     }
                     //RUD
                     else if (redMoveRUD)
                     {
-                        ghostMoveRUD("ghostRedScatter");
+                        GhostScatterRUD("ghostRed");
                     }
                     //LRU
                     else if (redMoveLRU)
                     {
-                        ghostMoveLRU("ghostRedScatter");
+                        GhostScatterLRU("ghostRed");
                     }
                     //LUD
                     else if (redMoveLUD)
                     {
-                        ghostMoveLUD("ghostRedScatter");
+                        GhostScatterLUD("ghostRed");
                     }
                     //LRUD
                     else if (redMoveLRUD)
                     {
-                        ghostMoveLRUD("ghostRedScatter");
+                        GhostScatterLRUD("ghostRed");
                     }
                     break;
 
 
-                case "pinkScatter":
+                case "ghostPink":
                     //checking the which waypoint
                     //RD
                     if (pinkMoveRD)
@@ -1826,31 +2153,31 @@ namespace Pacman
                     //LRD
                     else if (pinkMoveLRD)
                     {
-                        ghostMoveLRD("pinkScatter");
+                        GhostScatterLRD("ghostPink");
                     }
                     //RUD
                     else if (pinkMoveRUD)
                     {
-                        ghostMoveRUD("pinkScatter");
+                        GhostScatterRUD("ghostPink");
                     }
                     //LRU
                     else if (pinkMoveLRU)
                     {
-                        ghostMoveLRU("pinkScatter");
+                        GhostScatterLRU("ghostPink");
                     }
                     //LUD
                     else if (pinkMoveLUD)
                     {
-                        ghostMoveLUD("pinkScatter");
+                        GhostScatterLUD("ghostPink");
                     }
                     //LRUD
                     else if (pinkMoveLRUD)
                     {
-                        ghostMoveLRUD("pinkScatter");
+                        GhostScatterLRUD("ghostPink");
                     }
                     break;
 
-                case "orangeScatter":
+                case "ghostOrange":
                     //checking the which waypoint
                     //RD
                     if (orangeMoveRD)
@@ -1875,33 +2202,33 @@ namespace Pacman
                     //LRD
                     else if (orangeMoveLRD)
                     {
-                        ghostMoveLRD("orangeScatter");
+                        GhostScatterLRD("ghostOrange");
                     }
                     //RUD
                     else if (orangeMoveRUD)
                     {
-                        ghostMoveRUD("orangeScatter");
+                        GhostScatterRUD("ghostOrange");
                     }
                     //LRU
                     else if (orangeMoveLRU)
                     {
-                        ghostMoveLRU("orangeScatter");
+                        GhostScatterLRU("ghostOrange");
                     }
                     //LUD
                     else if (orangeMoveLUD)
                     {
-                        ghostMoveLUD("orangeScatter");
+                        GhostScatterLUD("ghostOrange");
                     }
                     //LRUD
                     else if (orangeMoveLRUD)
                     {
-                        ghostMoveLRUD("orangeScatter");
+                        GhostScatterLRUD("ghostOrange");
                     }
                     break;
 
 
 
-                case "blueScatter":
+                case "ghostBlue":
                     //checking the which waypoint
                     //RD
                     if (blueMoveRD)
@@ -1926,27 +2253,27 @@ namespace Pacman
                     //LRD
                     else if (blueMoveLRD)
                     {
-                        ghostMoveLRD("blueScatter");
+                        GhostScatterLRD("ghostBlue");
                     }
                     //RUD
                     else if (blueMoveRUD)
                     {
-                        ghostMoveRUD("blueScatter");
+                        GhostScatterRUD("ghostBlue");
                     }
                     //LRU
                     else if (blueMoveLRU)
                     {
-                        ghostMoveLRU("blueScatter");
+                        GhostScatterLRU("ghostBlue");
                     }
                     //LUD
                     else if (blueMoveLUD)
                     {
-                        ghostMoveLUD("blueScatter");
+                        GhostScatterLUD("ghostBlue");
                     }
                     //LRUD
                     else if (blueMoveLRUD)
                     {
-                        ghostMoveLRUD("blueScatter");
+                        GhostScatterLRUD("ghostBlue");
                     }
                     break;
 
@@ -1958,444 +2285,227 @@ namespace Pacman
 
         #endregion
 
+        #region Frightend Ghosts movment
+
+        private void GhostFrightendMovement(string ghost)
+        {
+            switch (ghost)
+            {
+                case "ghostRed":
+                    //checking the which waypoint
+                    //RD
+                    if (redMoveRD)
+                    {
+                        ghostMoveRD("ghostRed");
+                    }
+                    //LD
+                    else if (redMoveLD)
+                    {
+                        ghostMoveLD("ghostRed");
+                    }
+                    //LU
+                    else if (redMoveLU)
+                    {
+                        ghostMoveLU("ghostRed");
+                    }
+                    //RU
+                    else if (redMoveRU)
+                    {
+                        ghostMoveRU("ghostRed");
+                    }
+                    //LRD
+                    else if (redMoveLRD)
+                    {
+                        GhostFearMoveLRD("ghostRed");
+                    }
+                    //RUD
+                    else if (redMoveRUD)
+                    {
+                        GhostFearMoveRUD("ghostRed");
+                    }
+                    //LRU
+                    else if (redMoveLRU)
+                    {
+                        GhostFearMoveLRU("ghostRed");
+                    }
+                    //LUD
+                    else if (redMoveLUD)
+                    {
+                        GhostFearMoveLUD("ghostRed");
+                    }
+                    //LRUD
+                    else if (redMoveLRUD)
+                    {
+                        GhostFearMoveLRUD("ghostRed");
+                    }
+                    break;
+
+
+                case "ghostPink":
+                    //checking the which waypoint
+                    //RD
+                    if (pinkMoveRD)
+                    {
+                        ghostMoveRD("ghostPink");
+                    }
+                    //LD
+                    else if (pinkMoveLD)
+                    {
+                        ghostMoveLD("ghostPink");
+                    }
+                    //LU
+                    else if (pinkMoveLU)
+                    {
+                        ghostMoveLU("ghostPink");
+                    }
+                    //RU
+                    else if (pinkMoveRU)
+                    {
+                        ghostMoveRU("ghostPink");
+                    }
+                    //LRD
+                    else if (pinkMoveLRD)
+                    {
+                        GhostFearMoveLRD("ghostPink");
+                    }
+                    //RUD
+                    else if (pinkMoveRUD)
+                    {
+                        GhostFearMoveRUD("ghostPink");
+                    }
+                    //LRU
+                    else if (pinkMoveLRU)
+                    {
+                        GhostFearMoveLRU("ghostPink");
+                    }
+                    //LUD
+                    else if (pinkMoveLUD)
+                    {
+                        GhostFearMoveLUD("ghostPink");
+                    }
+                    //LRUD
+                    else if (pinkMoveLRUD)
+                    {
+                        GhostFearMoveLRUD("ghostPink");
+                    }
+                    break;
+
+                case "ghostOrange":
+                    //checking the which waypoint
+                    //RD
+                    if (orangeMoveRD)
+                    {
+                        ghostMoveRD("ghostOrange");
+                    }
+                    //LD
+                    else if (orangeMoveLD)
+                    {
+                        ghostMoveLD("ghostOrange");
+                    }
+                    //LU
+                    else if (orangeMoveLU)
+                    {
+                        ghostMoveLU("ghostOrange");
+                    }
+                    //RU
+                    else if (orangeMoveRU)
+                    {
+                        ghostMoveRU("ghostOrange");
+                    }
+                    //LRD
+                    else if (orangeMoveLRD)
+                    {
+                        GhostFearMoveLRD("ghostOrange");
+                    }
+                    //RUD
+                    else if (orangeMoveRUD)
+                    {
+                        GhostFearMoveRUD("ghostOrange");
+                    }
+                    //LRU
+                    else if (orangeMoveLRU)
+                    {
+                        GhostFearMoveLRU("ghostOrange");
+                    }
+                    //LUD
+                    else if (orangeMoveLUD)
+                    {
+                        GhostFearMoveLUD("ghostOrange");
+                    }
+                    //LRUD
+                    else if (orangeMoveLRUD)
+                    {
+                        GhostFearMoveLRUD("ghostOrange");
+                    }
+                    break;
+
+
+
+                case "ghostBlue":
+                    //checking the which waypoint
+                    //RD
+                    if (blueMoveRD)
+                    {
+                        ghostMoveRD("ghostBlue");
+                    }
+                    //LD
+                    else if (blueMoveLD)
+                    {
+                        ghostMoveLD("ghostBlue");
+                    }
+                    //LU
+                    else if (blueMoveLU)
+                    {
+                        ghostMoveLU("ghostBlue");
+                    }
+                    //RU
+                    else if (blueMoveRU)
+                    {
+                        ghostMoveRU("ghostBlue");
+                    }
+                    //LRD
+                    else if (blueMoveLRD)
+                    {
+                        GhostFearMoveLRD("ghostBlue");
+                    }
+                    //RUD
+                    else if (blueMoveRUD)
+                    {
+                        GhostFearMoveRUD("ghostBlue");
+                    }
+                    //LRU
+                    else if (blueMoveLRU)
+                    {
+                        GhostFearMoveLRU("ghostBlue");
+                    }
+                    //LUD
+                    else if (blueMoveLUD)
+                    {
+                        GhostFearMoveLUD("ghostBlue");
+                    }
+                    //LRUD
+                    else if (blueMoveLRUD)
+                    {
+                        GhostFearMoveLRUD("ghostBlue");
+                    }
+                    break;
+
+            }
+
+        }
+
+        #endregion
 
         #region Ghost Chase Waypoints
 
         private void ghostCaseWhichWaypoint(string ghost)
         {
-            switch (ghost)
-            {
-                case "redChase":
-                    //checking the which waypoint
-                    //RD
-                    if ((pbGhostRed.Top == waypointsY[0] && pbGhostRed.Left == waypointsX[0])
-                            || (pbGhostRed.Top == waypointsY[0] && pbGhostRed.Left == waypointsX[5])
-                            || (pbGhostRed.Top == waypointsY[3] && pbGhostRed.Left == waypointsX[3])
-                            || (pbGhostRed.Top == waypointsY[2] && pbGhostRed.Left == waypointsX[5])
-                            || (pbGhostRed.Top == waypointsY[6] && pbGhostRed.Left == waypointsX[0])
-                            || (pbGhostRed.Top == waypointsY[6] && pbGhostRed.Left == waypointsX[5])
-                            || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[8])
-                            || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[0])
-                            || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[5]))
-                    {
-                        ghostMoveRD("ghostRed");
-                    }
-                    //LD
-                    else if ((pbGhostRed.Top == waypointsY[0] && pbGhostRed.Left == waypointsX[4])
-                                  || (pbGhostRed.Top == waypointsY[0] && pbGhostRed.Left == waypointsX[9])
-                                  || (pbGhostRed.Top == waypointsY[2] && pbGhostRed.Left == waypointsX[4])
-                                  || (pbGhostRed.Top == waypointsY[3] && pbGhostRed.Left == waypointsX[6])
-                                  || (pbGhostRed.Top == waypointsY[6] && pbGhostRed.Left == waypointsX[4])
-                                  || (pbGhostRed.Top == waypointsY[6] && pbGhostRed.Left == waypointsX[9])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[1])
-                                  || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[9])
-                                  || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[4]))
-                    {
-                        ghostMoveLD("ghostRed");
-                    }
-                    //LU
-                    else if ((pbGhostRed.Top == waypointsY[2] && pbGhostRed.Left == waypointsX[6])
-                                  || (pbGhostRed.Top == waypointsY[2] && pbGhostRed.Left == waypointsX[9])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[9])
-                                  || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[2])
-                                  || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[6])
-                                  || (pbGhostRed.Top == waypointsY[9] && pbGhostRed.Left == waypointsX[9]))
-                    {
-                        ghostMoveLU("ghostRed");
-                    }
-                    //RU
-                    else if ((pbGhostRed.Top == waypointsY[2] && pbGhostRed.Left == waypointsX[0])
-                                  || (pbGhostRed.Top == waypointsY[2] && pbGhostRed.Left == waypointsX[3])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[0])
-                                  || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[3])
-                                  || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[7])
-                                  || (pbGhostRed.Top == waypointsY[9] && pbGhostRed.Left == waypointsX[0]))
-                    {
-                        ghostMoveRU("ghostRedChase");
-                    }
-                    //LRD
-                    else if ((pbGhostRed.Top == waypointsY[0] && pbGhostRed.Left == waypointsX[2])
-                                  || (pbGhostRed.Top == waypointsY[0] && pbGhostRed.Left == waypointsX[7])
-                                  || (pbGhostRed.Top == waypointsY[1] && pbGhostRed.Left == waypointsX[3])
-                                  || (pbGhostRed.Top == waypointsY[1] && pbGhostRed.Left == waypointsX[6])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[6])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[3]))
-                    {
-                        ghostMoveLRD("ghostRedChase");
-                    }
-                    //RUD
-                    else if ((pbGhostRed.Top == waypointsY[1] && pbGhostRed.Left == waypointsX[0])
-                                  || (pbGhostRed.Top == waypointsY[2] && pbGhostRed.Left == waypointsX[7])
-                                  || (pbGhostRed.Top == waypointsY[4] && pbGhostRed.Left == waypointsX[6])
-                                  || (pbGhostRed.Top == waypointsY[5] && pbGhostRed.Left == waypointsX[3])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[2]))
-                    {
-                        ghostMoveRUD("ghostRedChase");
-                    }
-                    //LRU
-                    else if ((pbGhostRed.Top == waypointsY[1] && pbGhostRed.Left == waypointsX[4])
-                                  || (pbGhostRed.Top == waypointsY[1] && pbGhostRed.Left == waypointsX[5])
-                                  || (pbGhostRed.Top == waypointsY[3] && pbGhostRed.Left == waypointsX[4])
-                                  || (pbGhostRed.Top == waypointsY[3] && pbGhostRed.Left == waypointsX[5])
-                                  || (pbGhostRed.Top == waypointsY[6] && pbGhostRed.Left == waypointsX[3])
-                                  || (pbGhostRed.Top == waypointsY[6] && pbGhostRed.Left == waypointsX[6])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[4])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[5])
-                                  || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[1])
-                                  || (pbGhostRed.Top == waypointsY[8] && pbGhostRed.Left == waypointsX[8])
-                                  || (pbGhostRed.Top == waypointsY[9] && pbGhostRed.Left == waypointsX[4])
-                                  || (pbGhostRed.Top == waypointsY[9] && pbGhostRed.Left == waypointsX[5]))
-                    {
-                        ghostMoveLRU("ghostRedChase");
-                    }
-                    //LUD
-                    else if ((pbGhostRed.Top == waypointsY[1] && pbGhostRed.Left == waypointsX[9])
-                                  || (pbGhostRed.Top == waypointsY[2] && pbGhostRed.Left == waypointsX[2])
-                                  || (pbGhostRed.Top == waypointsY[4] && pbGhostRed.Left == waypointsX[3])
-                                  || (pbGhostRed.Top == waypointsY[5] && pbGhostRed.Left == waypointsX[6])
-                                  || (pbGhostRed.Top == waypointsY[7] && pbGhostRed.Left == waypointsX[7]))
-                    {
-                        ghostMoveLUD("ghostRedChase");
-                    }
-                    //LRUD
-                    else if ((pbGhostRed.Top == waypointsY[1] && pbGhostRed.Left == waypointsX[2])
-                                  || (pbGhostRed.Top == waypointsY[1] && pbGhostRed.Left == waypointsX[7])
-                                  || (pbGhostRed.Top == waypointsY[4] && pbGhostRed.Left == waypointsX[2])
-                                  || (pbGhostRed.Top == waypointsY[4] && pbGhostRed.Left == waypointsX[7])
-                                  || (pbGhostRed.Top == waypointsY[6] && pbGhostRed.Left == waypointsX[2])
-                                  || (pbGhostRed.Top == waypointsY[6] && pbGhostRed.Left == waypointsX[7]))
-                    {
-                        ghostMoveLRUD("ghostRedChase");
-                    }
-                    break;
-
-                    /*
-                case "pinkScatter":
-                    //checking the which waypoint
-                    //RD
-                    if ((pbGhostPink.Top == waypointsY[0] && pbGhostPink.Left == waypointsX[0])
-                            || (pbGhostPink.Top == waypointsY[0] && pbGhostPink.Left == waypointsX[5])
-                            || (pbGhostPink.Top == waypointsY[3] && pbGhostPink.Left == waypointsX[3])
-                            || (pbGhostPink.Top == waypointsY[2] && pbGhostPink.Left == waypointsX[5])
-                            || (pbGhostPink.Top == waypointsY[6] && pbGhostPink.Left == waypointsX[0])
-                            || (pbGhostPink.Top == waypointsY[6] && pbGhostPink.Left == waypointsX[5])
-                            || (pbGhostPink.Top == waypointsY[7] && pbGhostPink.Left == waypointsX[8])
-                            || (pbGhostPink.Top == waypointsY[8] && pbGhostPink.Left == waypointsX[0])
-                            || (pbGhostPink.Top == waypointsY[8] && pbGhostPink.Left == waypointsX[5]))
-                    {
-                        ghostMoveRD("ghostPink");
-                    }
-                    //LD
-                    else if ((pbGhostPink.Top == waypointsY[0] && pbGhostPink.Left == waypointsX[4])
-                                  || (pbGhostPink.Top == waypointsY[0] && pbGhostPink.Left == waypointsX[9])
-                                  || (pbGhostPink.Top == waypointsY[2] && pbGhostPink.Left == waypointsX[4])
-                                  || (pbGhostPink.Top == waypointsY[3] && pbGhostPink.Left == waypointsX[6])
-                                  || (pbGhostPink.Top == waypointsY[6] && pbGhostPink.Left == waypointsX[4])
-                                  || (pbGhostPink.Top == waypointsY[6] && pbGhostPink.Left == waypointsX[9])
-                                  || (pbGhostPink.Top == waypointsY[7] && pbGhostPink.Left == waypointsX[1])
-                                  || (pbGhostPink.Top == waypointsY[8] && pbGhostPink.Left == waypointsX[9])
-                                  || (pbGhostPink.Top == waypointsY[8] && pbGhostPink.Left == waypointsX[4]))
-                    {
-                        ghostMoveLD("ghostPink");
-                    }
-                    //LU
-                    else if ((pbGhostPink.Top == waypointsY[2] && pbGhostPink.Left == waypointsX[6])
-                                  || (pbGhostPink.Top == waypointsY[2] && pbGhostPink.Left == waypointsX[9])
-                                  || (pbGhostPink.Top == waypointsY[7] && pbGhostPink.Left == waypointsX[9])
-                                  || (pbGhostPink.Top == waypointsY[8] && pbGhostPink.Left == waypointsX[2])
-                                  || (pbGhostPink.Top == waypointsY[8] && pbGhostPink.Left == waypointsX[6])
-                                  || (pbGhostPink.Top == waypointsY[9] && pbGhostPink.Left == waypointsX[9]))
-                    {
-                        ghostMoveLU("ghostPink");
-                    }
-                    //RU
-                    else if ((pbGhostPink.Top == waypointsY[2] && pbGhostPink.Left == waypointsX[0])
-                                  || (pbGhostPink.Top == waypointsY[2] && pbGhostPink.Left == waypointsX[3])
-                                  || (pbGhostPink.Top == waypointsY[7] && pbGhostPink.Left == waypointsX[0])
-                                  || (pbGhostPink.Top == waypointsY[8] && pbGhostPink.Left == waypointsX[3])
-                                  || (pbGhostPink.Top == waypointsY[8] && pbGhostPink.Left == waypointsX[7])
-                                  || (pbGhostPink.Top == waypointsY[9] && pbGhostPink.Left == waypointsX[0]))
-                    {
-                        ghostMoveRU("ghostPink");
-                    }
-                    //LRD
-                    else if ((pbGhostPink.Top == waypointsY[0] && pbGhostPink.Left == waypointsX[2])
-                                  || (pbGhostPink.Top == waypointsY[0] && pbGhostPink.Left == waypointsX[7])
-                                  || (pbGhostPink.Top == waypointsY[1] && pbGhostPink.Left == waypointsX[3])
-                                  || (pbGhostPink.Top == waypointsY[1] && pbGhostPink.Left == waypointsX[6])
-                                  || (pbGhostPink.Top == waypointsY[7] && pbGhostPink.Left == waypointsX[6])
-                                  || (pbGhostPink.Top == waypointsY[7] && pbGhostPink.Left == waypointsX[3]))
-                    {
-                        ghostMoveLRD("pinkScatter");
-                    }
-                    //RUD
-                    else if ((pbGhostPink.Top == waypointsY[1] && pbGhostPink.Left == waypointsX[0])
-                                  || (pbGhostPink.Top == waypointsY[2] && pbGhostPink.Left == waypointsX[7])
-                                  || (pbGhostPink.Top == waypointsY[4] && pbGhostPink.Left == waypointsX[6])
-                                  || (pbGhostPink.Top == waypointsY[5] && pbGhostPink.Left == waypointsX[3])
-                                  || (pbGhostPink.Top == waypointsY[7] && pbGhostPink.Left == waypointsX[2]))
-                    {
-                        ghostMoveRUD("pinkScatter");
-                    }
-                    //LRU
-                    else if ((pbGhostPink.Top == waypointsY[1] && pbGhostPink.Left == waypointsX[4])
-                                  || (pbGhostPink.Top == waypointsY[1] && pbGhostPink.Left == waypointsX[5])
-                                  || (pbGhostPink.Top == waypointsY[3] && pbGhostPink.Left == waypointsX[4])
-                                  || (pbGhostPink.Top == waypointsY[3] && pbGhostPink.Left == waypointsX[5])
-                                  || (pbGhostPink.Top == waypointsY[6] && pbGhostPink.Left == waypointsX[3])
-                                  || (pbGhostPink.Top == waypointsY[6] && pbGhostPink.Left == waypointsX[6])
-                                  || (pbGhostPink.Top == waypointsY[7] && pbGhostPink.Left == waypointsX[4])
-                                  || (pbGhostPink.Top == waypointsY[7] && pbGhostPink.Left == waypointsX[5])
-                                  || (pbGhostPink.Top == waypointsY[8] && pbGhostPink.Left == waypointsX[1])
-                                  || (pbGhostPink.Top == waypointsY[8] && pbGhostPink.Left == waypointsX[8])
-                                  || (pbGhostPink.Top == waypointsY[9] && pbGhostPink.Left == waypointsX[4])
-                                  || (pbGhostPink.Top == waypointsY[9] && pbGhostPink.Left == waypointsX[5]))
-                    {
-                        ghostMoveLRU("pinkScatter");
-                    }
-                    //LUD
-                    else if ((pbGhostPink.Top == waypointsY[1] && pbGhostPink.Left == waypointsX[9])
-                                  || (pbGhostPink.Top == waypointsY[2] && pbGhostPink.Left == waypointsX[2])
-                                  || (pbGhostPink.Top == waypointsY[4] && pbGhostPink.Left == waypointsX[3])
-                                  || (pbGhostPink.Top == waypointsY[5] && pbGhostPink.Left == waypointsX[6])
-                                  || (pbGhostPink.Top == waypointsY[7] && pbGhostPink.Left == waypointsX[7]))
-                    {
-                        ghostMoveLUD("pinkScatter");
-                    }
-                    //LRUD
-                    else if ((pbGhostPink.Top == waypointsY[1] && pbGhostPink.Left == waypointsX[2])
-                                  || (pbGhostPink.Top == waypointsY[1] && pbGhostPink.Left == waypointsX[7])
-                                  || (pbGhostPink.Top == waypointsY[4] && pbGhostPink.Left == waypointsX[2])
-                                  || (pbGhostPink.Top == waypointsY[4] && pbGhostPink.Left == waypointsX[7])
-                                  || (pbGhostPink.Top == waypointsY[6] && pbGhostPink.Left == waypointsX[2])
-                                  || (pbGhostPink.Top == waypointsY[6] && pbGhostPink.Left == waypointsX[7]))
-                    {
-                        ghostMoveLRUD("pinkScatter");
-                    }
-                    break;
-
-                case "orangeScatter":
-                    //checking the which waypoint
-                    //RD
-                    if ((pbGhostOrange.Top == waypointsY[0] && pbGhostOrange.Left == waypointsX[0])
-                       || (pbGhostOrange.Top == waypointsY[0] && pbGhostOrange.Left == waypointsX[5])
-                       || (pbGhostOrange.Top == waypointsY[3] && pbGhostOrange.Left == waypointsX[3])
-                       || (pbGhostOrange.Top == waypointsY[2] && pbGhostOrange.Left == waypointsX[5])
-                       || (pbGhostOrange.Top == waypointsY[6] && pbGhostOrange.Left == waypointsX[0])
-                       || (pbGhostOrange.Top == waypointsY[6] && pbGhostOrange.Left == waypointsX[5])
-                       || (pbGhostOrange.Top == waypointsY[7] && pbGhostOrange.Left == waypointsX[8])
-                       || (pbGhostOrange.Top == waypointsY[8] && pbGhostOrange.Left == waypointsX[0])
-                       || (pbGhostOrange.Top == waypointsY[8] && pbGhostOrange.Left == waypointsX[5]))
-                    {
-                        ghostMoveRD("ghostOrange");
-                    }
-                    //LD
-                    else if ((pbGhostOrange.Top == waypointsY[0] && pbGhostOrange.Left == waypointsX[4])
-                            || (pbGhostOrange.Top == waypointsY[0] && pbGhostOrange.Left == waypointsX[9])
-                            || (pbGhostOrange.Top == waypointsY[2] && pbGhostOrange.Left == waypointsX[4])
-                            || (pbGhostOrange.Top == waypointsY[3] && pbGhostOrange.Left == waypointsX[6])
-                            || (pbGhostOrange.Top == waypointsY[6] && pbGhostOrange.Left == waypointsX[4])
-                            || (pbGhostOrange.Top == waypointsY[6] && pbGhostOrange.Left == waypointsX[9])
-                            || (pbGhostOrange.Top == waypointsY[7] && pbGhostOrange.Left == waypointsX[1])
-                            || (pbGhostOrange.Top == waypointsY[8] && pbGhostOrange.Left == waypointsX[9])
-                            || (pbGhostOrange.Top == waypointsY[8] && pbGhostOrange.Left == waypointsX[4]))
-                    {
-                        ghostMoveLD("ghostOrange");
-                    }
-                    //LU
-                    else if ((pbGhostOrange.Top == waypointsY[2] && pbGhostOrange.Left == waypointsX[6])
-                            || (pbGhostOrange.Top == waypointsY[2] && pbGhostOrange.Left == waypointsX[9])
-                            || (pbGhostOrange.Top == waypointsY[7] && pbGhostOrange.Left == waypointsX[9])
-                            || (pbGhostOrange.Top == waypointsY[8] && pbGhostOrange.Left == waypointsX[2])
-                            || (pbGhostOrange.Top == waypointsY[8] && pbGhostOrange.Left == waypointsX[6])
-                            || (pbGhostOrange.Top == waypointsY[9] && pbGhostOrange.Left == waypointsX[9]))
-                    {
-                        ghostMoveLU("ghostOrange");
-                    }
-                    //RU
-                    else if ((pbGhostOrange.Top == waypointsY[2] && pbGhostOrange.Left == waypointsX[0])
-                            || (pbGhostOrange.Top == waypointsY[2] && pbGhostOrange.Left == waypointsX[3])
-                            || (pbGhostOrange.Top == waypointsY[7] && pbGhostOrange.Left == waypointsX[0])
-                            || (pbGhostOrange.Top == waypointsY[8] && pbGhostOrange.Left == waypointsX[3])
-                            || (pbGhostOrange.Top == waypointsY[8] && pbGhostOrange.Left == waypointsX[7])
-                            || (pbGhostOrange.Top == waypointsY[9] && pbGhostOrange.Left == waypointsX[0]))
-                    {
-                        ghostMoveRU("ghostOrange");
-                    }
-                    //LRD
-                    else if ((pbGhostOrange.Top == waypointsY[0] && pbGhostOrange.Left == waypointsX[2])
-                            || (pbGhostOrange.Top == waypointsY[0] && pbGhostOrange.Left == waypointsX[7])
-                            || (pbGhostOrange.Top == waypointsY[1] && pbGhostOrange.Left == waypointsX[3])
-                            || (pbGhostOrange.Top == waypointsY[1] && pbGhostOrange.Left == waypointsX[6])
-                            || (pbGhostOrange.Top == waypointsY[7] && pbGhostOrange.Left == waypointsX[6])
-                            || (pbGhostOrange.Top == waypointsY[7] && pbGhostOrange.Left == waypointsX[3]))
-                    {
-                        ghostMoveLRD("orangeScatter");
-                    }
-                    //RUD
-                    else if ((pbGhostOrange.Top == waypointsY[1] && pbGhostOrange.Left == waypointsX[0])
-                            || (pbGhostOrange.Top == waypointsY[2] && pbGhostOrange.Left == waypointsX[7])
-                            || (pbGhostOrange.Top == waypointsY[4] && pbGhostOrange.Left == waypointsX[6])
-                            || (pbGhostOrange.Top == waypointsY[5] && pbGhostOrange.Left == waypointsX[3])
-                            || (pbGhostOrange.Top == waypointsY[7] && pbGhostOrange.Left == waypointsX[2]))
-                    {
-                        ghostMoveRUD("orangeScatter");
-                    }
-                    //LRU
-                    else if ((pbGhostOrange.Top == waypointsY[1] && pbGhostOrange.Left == waypointsX[4])
-                            || (pbGhostOrange.Top == waypointsY[1] && pbGhostOrange.Left == waypointsX[5])
-                            || (pbGhostOrange.Top == waypointsY[3] && pbGhostOrange.Left == waypointsX[5])
-                            || (pbGhostOrange.Top == waypointsY[6] && pbGhostOrange.Left == waypointsX[3])
-                            || (pbGhostOrange.Top == waypointsY[6] && pbGhostOrange.Left == waypointsX[6])
-                            || (pbGhostOrange.Top == waypointsY[7] && pbGhostOrange.Left == waypointsX[4])
-                            || (pbGhostOrange.Top == waypointsY[7] && pbGhostOrange.Left == waypointsX[5])
-                            || (pbGhostOrange.Top == waypointsY[8] && pbGhostOrange.Left == waypointsX[1])
-                            || (pbGhostOrange.Top == waypointsY[8] && pbGhostOrange.Left == waypointsX[8])
-                            || (pbGhostOrange.Top == waypointsY[9] && pbGhostOrange.Left == waypointsX[4])
-                            || (pbGhostOrange.Top == waypointsY[9] && pbGhostOrange.Left == waypointsX[5]))
-                    {
-                        ghostMoveLRU("orangeScatter");
-                    }
-                    //LUD
-                    else if ((pbGhostOrange.Top == waypointsY[1] && pbGhostOrange.Left == waypointsX[9])
-                            || (pbGhostOrange.Top == waypointsY[2] && pbGhostOrange.Left == waypointsX[2])
-                            || (pbGhostOrange.Top == waypointsY[4] && pbGhostOrange.Left == waypointsX[3])
-                            || (pbGhostOrange.Top == waypointsY[5] && pbGhostOrange.Left == waypointsX[6])
-                            || (pbGhostOrange.Top == waypointsY[7] && pbGhostOrange.Left == waypointsX[7]))
-                    {
-                        ghostMoveLUD("orangeScatter");
-                    }
-                    //LRUD
-                    else if ((pbGhostOrange.Top == waypointsY[1] && pbGhostOrange.Left == waypointsX[2])
-                            || (pbGhostOrange.Top == waypointsY[1] && pbGhostOrange.Left == waypointsX[7])
-                            || (pbGhostOrange.Top == waypointsY[4] && pbGhostOrange.Left == waypointsX[2])
-                            || (pbGhostOrange.Top == waypointsY[4] && pbGhostOrange.Left == waypointsX[7])
-                            || (pbGhostOrange.Top == waypointsY[6] && pbGhostOrange.Left == waypointsX[2])
-                            || (pbGhostOrange.Top == waypointsY[6] && pbGhostOrange.Left == waypointsX[7]))
-                    {
-                        ghostMoveLRUD("orangeScatter");
-                    }
-                    break;
 
 
-
-                case "blueScatter":
-                    //checking the which waypoint
-                    //RD
-                    if ((pbGhostBlue.Top == waypointsY[0] && pbGhostBlue.Left == waypointsX[0])
-                       || (pbGhostBlue.Top == waypointsY[0] && pbGhostBlue.Left == waypointsX[5])
-                       || (pbGhostBlue.Top == waypointsY[3] && pbGhostBlue.Left == waypointsX[3])
-                       || (pbGhostBlue.Top == waypointsY[2] && pbGhostBlue.Left == waypointsX[5])
-                       || (pbGhostBlue.Top == waypointsY[6] && pbGhostBlue.Left == waypointsX[0])
-                       || (pbGhostBlue.Top == waypointsY[6] && pbGhostBlue.Left == waypointsX[5])
-                       || (pbGhostBlue.Top == waypointsY[7] && pbGhostBlue.Left == waypointsX[8])
-                       || (pbGhostBlue.Top == waypointsY[8] && pbGhostBlue.Left == waypointsX[0])
-                       || (pbGhostBlue.Top == waypointsY[8] && pbGhostBlue.Left == waypointsX[5]))
-                    {
-                        ghostMoveRD("ghostBlue");
-                    }
-                    //LD
-                    else if ((pbGhostBlue.Top == waypointsY[0] && pbGhostBlue.Left == waypointsX[4])
-                            || (pbGhostBlue.Top == waypointsY[0] && pbGhostBlue.Left == waypointsX[9])
-                            || (pbGhostBlue.Top == waypointsY[2] && pbGhostBlue.Left == waypointsX[4])
-                            || (pbGhostBlue.Top == waypointsY[3] && pbGhostBlue.Left == waypointsX[6])
-                            || (pbGhostBlue.Top == waypointsY[6] && pbGhostBlue.Left == waypointsX[4])
-                            || (pbGhostBlue.Top == waypointsY[6] && pbGhostBlue.Left == waypointsX[9])
-                            || (pbGhostBlue.Top == waypointsY[7] && pbGhostBlue.Left == waypointsX[1])
-                            || (pbGhostBlue.Top == waypointsY[8] && pbGhostBlue.Left == waypointsX[9])
-                            || (pbGhostBlue.Top == waypointsY[8] && pbGhostBlue.Left == waypointsX[4]))
-                    {
-                        ghostMoveLD("ghostBlue");
-                    }
-                    //LU
-                    else if ((pbGhostBlue.Top == waypointsY[2] && pbGhostBlue.Left == waypointsX[6])
-                            || (pbGhostBlue.Top == waypointsY[2] && pbGhostBlue.Left == waypointsX[9])
-                            || (pbGhostBlue.Top == waypointsY[7] && pbGhostBlue.Left == waypointsX[9])
-                            || (pbGhostBlue.Top == waypointsY[8] && pbGhostBlue.Left == waypointsX[2])
-                            || (pbGhostBlue.Top == waypointsY[8] && pbGhostBlue.Left == waypointsX[6])
-                            || (pbGhostBlue.Top == waypointsY[9] && pbGhostBlue.Left == waypointsX[9]))
-                    {
-                        ghostMoveLU("ghostBlue");
-                    }
-                    //RU
-                    else if ((pbGhostBlue.Top == waypointsY[2] && pbGhostBlue.Left == waypointsX[0])
-                            || (pbGhostBlue.Top == waypointsY[2] && pbGhostBlue.Left == waypointsX[3])
-                            || (pbGhostBlue.Top == waypointsY[7] && pbGhostBlue.Left == waypointsX[0])
-                            || (pbGhostBlue.Top == waypointsY[8] && pbGhostBlue.Left == waypointsX[3])
-                            || (pbGhostBlue.Top == waypointsY[8] && pbGhostBlue.Left == waypointsX[7])
-                            || (pbGhostBlue.Top == waypointsY[9] && pbGhostBlue.Left == waypointsX[0]))
-                    {
-                        ghostMoveRU("ghostBlue");
-                    }
-                    //LRD
-                    else if ((pbGhostBlue.Top == waypointsY[0] && pbGhostBlue.Left == waypointsX[2])
-                            || (pbGhostBlue.Top == waypointsY[0] && pbGhostBlue.Left == waypointsX[7])
-                            || (pbGhostBlue.Top == waypointsY[1] && pbGhostBlue.Left == waypointsX[3])
-                            || (pbGhostBlue.Top == waypointsY[1] && pbGhostBlue.Left == waypointsX[6])
-                            || (pbGhostBlue.Top == waypointsY[7] && pbGhostBlue.Left == waypointsX[6])
-                            || (pbGhostBlue.Top == waypointsY[7] && pbGhostBlue.Left == waypointsX[3]))
-                    {
-                        ghostMoveLRD("blueScatter");
-                    }
-                    //RUD
-                    else if ((pbGhostBlue.Top == waypointsY[1] && pbGhostBlue.Left == waypointsX[0])
-                            || (pbGhostBlue.Top == waypointsY[2] && pbGhostBlue.Left == waypointsX[7])
-                            || (pbGhostBlue.Top == waypointsY[4] && pbGhostBlue.Left == waypointsX[6])
-                            || (pbGhostBlue.Top == waypointsY[5] && pbGhostBlue.Left == waypointsX[3])
-                            || (pbGhostBlue.Top == waypointsY[7] && pbGhostBlue.Left == waypointsX[2]))
-                    {
-                        ghostMoveRUD("blueScatter");
-                    }
-                    //LRU
-                    else if ((pbGhostBlue.Top == waypointsY[1] && pbGhostBlue.Left == waypointsX[4])
-                            || (pbGhostBlue.Top == waypointsY[1] && pbGhostBlue.Left == waypointsX[5])
-                            || (pbGhostBlue.Top == waypointsY[3] && pbGhostBlue.Left == waypointsX[4])
-                            || (pbGhostBlue.Top == waypointsY[6] && pbGhostBlue.Left == waypointsX[3])
-                            || (pbGhostBlue.Top == waypointsY[6] && pbGhostBlue.Left == waypointsX[6])
-                            || (pbGhostBlue.Top == waypointsY[7] && pbGhostBlue.Left == waypointsX[4])
-                            || (pbGhostBlue.Top == waypointsY[7] && pbGhostBlue.Left == waypointsX[5])
-                            || (pbGhostBlue.Top == waypointsY[8] && pbGhostBlue.Left == waypointsX[1])
-                            || (pbGhostBlue.Top == waypointsY[8] && pbGhostBlue.Left == waypointsX[8])
-                            || (pbGhostBlue.Top == waypointsY[9] && pbGhostBlue.Left == waypointsX[4])
-                            || (pbGhostBlue.Top == waypointsY[9] && pbGhostBlue.Left == waypointsX[5]))
-                    {
-                        ghostMoveLRU("blueScatter");
-                    }
-                    //LUD
-                    else if ((pbGhostBlue.Top == waypointsY[1] && pbGhostBlue.Left == waypointsX[9])
-                            || (pbGhostBlue.Top == waypointsY[2] && pbGhostBlue.Left == waypointsX[2])
-                            || (pbGhostBlue.Top == waypointsY[4] && pbGhostBlue.Left == waypointsX[3])
-                            || (pbGhostBlue.Top == waypointsY[5] && pbGhostBlue.Left == waypointsX[6])
-                            || (pbGhostBlue.Top == waypointsY[7] && pbGhostBlue.Left == waypointsX[7]))
-                    {
-                        ghostMoveLUD("blueScatter");
-                    }
-                    //LRUD
-                    else if ((pbGhostBlue.Top == waypointsY[1] && pbGhostBlue.Left == waypointsX[2])
-                            || (pbGhostBlue.Top == waypointsY[1] && pbGhostBlue.Left == waypointsX[7])
-                            || (pbGhostBlue.Top == waypointsY[4] && pbGhostBlue.Left == waypointsX[2])
-                            || (pbGhostBlue.Top == waypointsY[4] && pbGhostBlue.Left == waypointsX[7])
-                            || (pbGhostBlue.Top == waypointsY[6] && pbGhostBlue.Left == waypointsX[2])
-                            || (pbGhostBlue.Top == waypointsY[6] && pbGhostBlue.Left == waypointsX[7]))
-                    {
-                        ghostMoveLRUD("blueScatter");
-                    }
-                    break;
-                    */
-
-            }
 
 
         }
 
-
-        #endregion
-
-        #region Ghost Frightened
-
-        bool ghostFrightend = false;
-
-        
 
         #endregion
 
@@ -2413,7 +2523,7 @@ namespace Pacman
         {
             int leftExit = 220;
             int rightExit = 236;
-            int inHouseStartY = 230;
+            int inHouseStartY = 228;
             if (redInHouse)
             {
                 Settings.GhostPinkDirection = Directions.Stop;
@@ -2431,7 +2541,7 @@ namespace Pacman
                 else if (pbGhostRed.Left == rightExit && pbGhostRed.Top == waypointsY[3])
                 {
                     Settings.GhostRedDirection = Directions.Right;
-                    scatter = true;
+                    redScatter = true;
                     redInHouse = false;
                 }
 
@@ -2451,7 +2561,7 @@ namespace Pacman
                     else if (pbGhostPink.Left == leftExit && pbGhostPink.Top == waypointsY[3])
                     {
                         Settings.GhostPinkDirection = Directions.Left;
-                        scatter = true;
+                        pinkScatter = true;
                         pinkInHouse = false;
                     }
                 }
@@ -2470,7 +2580,7 @@ namespace Pacman
                         else if (pbGhostBlue.Left == rightExit && pbGhostBlue.Top == waypointsY[3])
                         {
                             Settings.GhostBlueDirection = Directions.Right;
-                            scatter = true;
+                            blueScatter = true;
                             blueInHouse = false;
                         }
                     }
@@ -2489,7 +2599,7 @@ namespace Pacman
                             else if (pbGhostOrange.Left == leftExit && pbGhostOrange.Top == waypointsY[3])
                             {
                                 Settings.GhostOrangeDirection = Directions.Left;
-                                scatter = true;
+                                orangeScatter = true;
                                 orangeInHouse = false;
                             }
                         }
@@ -2499,8 +2609,6 @@ namespace Pacman
             }
         }
         #endregion
-
-        #region Ghost Methods Left, Right, Up, or Down
 
         #region constant Move methods
 
@@ -2653,14 +2761,16 @@ namespace Pacman
         int[] ghostBlueScatterXY = new int[] { 450, 490 };
         int[] ghostOrangeScatterXY = new int[] { 0, 490 };
 
+        #region ghost scatter AI
 
 
-        public void ghostMoveLRU(string ghost)
+        public void GhostScatterLRU(string ghost)
         {
 
             switch (ghost)
             {
-                case "ghostRedScatter":
+
+                case "ghostRed":
                     if (((ghostRedScatterXY[1] + pbGhostRed.Top) > (ghostRedScatterXY[0] - pbGhostRed.Left)))
                     {
                         if (Settings.GhostRedDirection != Directions.Down)
@@ -2686,7 +2796,7 @@ namespace Pacman
                     redMoveLRU = false;
 
                     break;
-                case "pinkScatter":
+                case "ghostPink":
                     if (pbGhostPink.Top > pbGhostPink.Left)
                     {
                         if (Settings.GhostPinkDirection != Directions.Down)
@@ -2713,7 +2823,7 @@ namespace Pacman
 
 
                     break;
-                case "orangeScatter":
+                case "ghostOrange":
                     if (((ghostOrangeScatterXY[1] - pbGhostOrange.Top) > (pbGhostOrange.Left)))
                     {
                         if (Settings.GhostOrangeDirection != Directions.Right)
@@ -2739,7 +2849,7 @@ namespace Pacman
                     orangeMoveLRU = false;
 
                     break;
-                case "blueScatter":
+                case "ghostBlue":
                     if (((ghostBlueScatterXY[1] - pbGhostBlue.Top) > (ghostBlueScatterXY[0] - pbGhostBlue.Left)))
                     {
                         if (Settings.GhostBlueDirection != Directions.Left)
@@ -2770,24 +2880,26 @@ namespace Pacman
 
         }
 
-        public void ghostMoveLRD(string ghost)
+        public void GhostScatterLRD(string ghost)
         {
+
             switch (ghost)
             {
-                case "ghostRedScatter":
-                        if (Settings.GhostRedDirection != Directions.Left)
-                        {
-                            Settings.GhostRedDirection = Directions.Right;
-                        }
-                        else
-                        {
-                            Settings.GhostRedDirection = Directions.Down;
-                        }
+
+                case "ghostRed":
+                    if (Settings.GhostRedDirection != Directions.Left)
+                    {
+                        Settings.GhostRedDirection = Directions.Right;
+                    }
+                    else
+                    {
+                        Settings.GhostRedDirection = Directions.Down;
+                    }
                     redMoveLRD = false;
 
                     break;
 
-                case "pinkScatter":
+                case "ghostPink":
                     if (Settings.GhostPinkDirection != Directions.Right)
                     {
                         Settings.GhostPinkDirection = Directions.Left;
@@ -2800,7 +2912,7 @@ namespace Pacman
 
                     break;
 
-                case "orangeScatter":
+                case "ghostOrange":
                     if (Settings.GhostOrangeDirection != Directions.Right)
                     {
                         Settings.GhostOrangeDirection = Directions.Left;
@@ -2813,7 +2925,7 @@ namespace Pacman
 
                     break;
 
-                case "blueScatter":
+                case "ghostBlue":
                     if (Settings.GhostBlueDirection != Directions.Left)
                     {
                         Settings.GhostBlueDirection = Directions.Right;
@@ -2822,17 +2934,19 @@ namespace Pacman
                     {
                         Settings.GhostBlueDirection = Directions.Down;
                     }
-                    blueMoveLRD = false; 
+                    blueMoveLRD = false;
 
                     break;
             }
 
         }
-        public void ghostMoveRUD(string ghost)
+        public void GhostScatterRUD(string ghost)
         {
+
             switch (ghost)
             {
-                case "ghostRedScatter":
+
+                case "ghostRed":
                     if (((ghostRedScatterXY[1] + pbGhostRed.Top) > (ghostRedScatterXY[0] - pbGhostRed.Left)))
                     {
                         if (Settings.GhostRedDirection != Directions.Down)
@@ -2859,7 +2973,7 @@ namespace Pacman
 
 
                     break;
-                case "pinkScatter":
+                case "ghostPink":
                     if (pbGhostPink.Top > pbGhostPink.Left)
                     {
                         if (Settings.GhostPinkDirection != Directions.Down)
@@ -2886,7 +3000,7 @@ namespace Pacman
 
                     break;
 
-                case "orangeScatter":
+                case "ghostOrange":
                     if (((ghostOrangeScatterXY[1] - pbGhostOrange.Top) > (pbGhostOrange.Left)))
                     {
                         if (Settings.GhostOrangeDirection != Directions.Up)
@@ -2912,7 +3026,7 @@ namespace Pacman
                     orangeMoveRUD = false;
 
                     break;
-                case "blueScatter":
+                case "ghostBlue":
                     if (((ghostBlueScatterXY[1] + pbGhostBlue.Top) > (ghostBlueScatterXY[0] - pbGhostBlue.Left)))
                     {
                         if (Settings.GhostBlueDirection != Directions.Up)
@@ -2941,11 +3055,13 @@ namespace Pacman
             }
 
         }
-        public void ghostMoveLUD(string ghost)
+        public void GhostScatterLUD(string ghost)
         {
+
             switch (ghost)
             {
-                case "ghostRedScatter":
+
+                case "ghostRed":
                     if (((ghostRedScatterXY[1] + pbGhostRed.Top) > (ghostRedScatterXY[0] - pbGhostRed.Left)))
                     {
                         if (Settings.GhostRedDirection != Directions.Down)
@@ -2972,7 +3088,7 @@ namespace Pacman
 
 
                     break;
-                case "pinkScatter":
+                case "ghostPink":
                     if (pbGhostPink.Top > pbGhostPink.Left)
                     {
                         if (Settings.GhostPinkDirection != Directions.Down)
@@ -2998,7 +3114,7 @@ namespace Pacman
                     pinkMoveLUD = false;
 
                     break;
-                case "orangeScatter":
+                case "ghostOrange":
                     if (((ghostOrangeScatterXY[1] - pbGhostOrange.Top) > (pbGhostOrange.Left)))
                     {
                         if (Settings.GhostOrangeDirection != Directions.Up)
@@ -3023,7 +3139,7 @@ namespace Pacman
                     }
                     orangeMoveLUD = false;
                     break;
-                case "blueScatter":
+                case "ghostBlue":
                     if (((ghostBlueScatterXY[1] - pbGhostBlue.Top) > (ghostBlueScatterXY[0] - pbGhostBlue.Left)))
                     {
                         if (Settings.GhostBlueDirection != Directions.Up)
@@ -3051,11 +3167,13 @@ namespace Pacman
             }
 
         }
-        public void ghostMoveLRUD(string ghost)
+        public void GhostScatterLRUD(string ghost)
         {
+
             switch (ghost)
             {
-                case "ghostRedScatter":
+
+                case "ghostRed":
                     if (((ghostRedScatterXY[1] + pbGhostRed.Top) > (ghostRedScatterXY[0] - pbGhostRed.Left)))
                     {
                         if (Settings.GhostRedDirection != Directions.Down)
@@ -3081,7 +3199,7 @@ namespace Pacman
                     redMoveLRUD = false;
 
                     break;
-                case "pinkScatter":
+                case "ghostPink":
                     if (pbGhostPink.Top > pbGhostPink.Left)
                     {
                         if (Settings.GhostPinkDirection != Directions.Down)
@@ -3108,7 +3226,7 @@ namespace Pacman
 
 
                     break;
-                case "orangeScatter":
+                case "ghostOrange":
                     if (((ghostOrangeScatterXY[1] - pbGhostOrange.Top) > (pbGhostOrange.Left)))
                     {
                         if (Settings.GhostOrangeDirection != Directions.Up)
@@ -3135,7 +3253,7 @@ namespace Pacman
 
 
                     break;
-                case "blueScatter":
+                case "ghostBlue":
                     if (((ghostBlueScatterXY[1] - pbGhostBlue.Top) > (ghostBlueScatterXY[0] - pbGhostBlue.Left)))
                     {
                         if (Settings.GhostBlueDirection != Directions.Up)
@@ -3164,9 +3282,842 @@ namespace Pacman
             }
 
         }
+        #endregion
 
+        #region ghost fear AI
+        Random rnd = new Random();
+
+        public void GhostFearMoveLRU(string ghost)
+        {
+            int i = rnd.Next(1, 4);
+
+            switch (ghost)
+            {
+                case "ghostRed":
+
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostRedDirection != Directions.Right)
+                            {
+                                Settings.GhostRedDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostRed");
+                            }
+                            break;
+
+                        case 2:
+                            if (Settings.GhostRedDirection != Directions.Left)
+                            {
+                                Settings.GhostRedDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostRed");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostRedDirection != Directions.Down)
+                            {
+                                Settings.GhostRedDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostRed");
+                            }
+                            break;
+                    }
+                    redMoveLRU = false;
+                    break;
+
+                case "ghostPink":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostPinkDirection != Directions.Right)
+                            {
+                                Settings.GhostPinkDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostPink");
+                            }
+                            break;
+
+                        case 2:
+                            if (Settings.GhostPinkDirection != Directions.Left)
+                            {
+                                Settings.GhostPinkDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostPink");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostPinkDirection != Directions.Down)
+                            {
+                                Settings.GhostPinkDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostPink");
+                            }
+                            break;
+                    }
+                    pinkMoveLRU = false;
+                    break;
+
+                case "ghostOrange":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostOrangeDirection != Directions.Right)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostOrange");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostOrangeDirection != Directions.Left)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostOrange");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostOrangeDirection != Directions.Down)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostOrange");
+                            }
+                            break;
+                    }
+                    orangeMoveLRU = false;
+                    break;
+
+                case "ghostBlue":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostBlueDirection != Directions.Right)
+                            {
+                                Settings.GhostBlueDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostBlue");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostBlueDirection != Directions.Left)
+                            {
+                                Settings.GhostBlueDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostBlue");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostBlueDirection != Directions.Down)
+                            {
+                                Settings.GhostBlueDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRU("ghostBlue");
+                            }
+                            break;
+                    }
+                    blueMoveLRU = false;
+                    break;
+            }
+        }
+        public void GhostFearMoveLRD(string ghost)
+        {
+            int i = rnd.Next(1, 4);
+
+            switch (ghost)
+            {
+                case "ghostRed":
+
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostRedDirection != Directions.Right)
+                            {
+                                Settings.GhostRedDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostRed");
+                            }
+                            break;
+
+                        case 2:
+                            if (Settings.GhostRedDirection != Directions.Left)
+                            {
+                                Settings.GhostRedDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostRed");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostRedDirection != Directions.Up)
+                            {
+                                Settings.GhostRedDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostRed");
+                            }
+                            break;
+                    }
+                    redMoveLRD = false;
+                    break;
+
+                case "ghostPink":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostPinkDirection != Directions.Right)
+                            {
+                                Settings.GhostPinkDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostPink");
+                            }
+                            break;
+
+                        case 2:
+                            if (Settings.GhostPinkDirection != Directions.Left)
+                            {
+                                Settings.GhostPinkDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostPink");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostPinkDirection != Directions.Up)
+                            {
+                                Settings.GhostPinkDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostPink");
+                            }
+                            break;
+                    }
+                    pinkMoveLRD = false;
+                    break;
+
+                case "ghostOrange":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostOrangeDirection != Directions.Right)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostOrange");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostOrangeDirection != Directions.Left)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostOrange");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostOrangeDirection != Directions.Up)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostOrange");
+                            }
+                            break;
+                    }
+                    orangeMoveLRD = false;
+                    break;
+
+                case "ghostBlue":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostBlueDirection != Directions.Right)
+                            {
+                                Settings.GhostBlueDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostBlue");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostBlueDirection != Directions.Left)
+                            {
+                                Settings.GhostBlueDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostBlue");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostBlueDirection != Directions.Up)
+                            {
+                                Settings.GhostBlueDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRD("ghostBlue");
+                            }
+                            break;
+                    }
+                    blueMoveLRD = false;
+                    break;
+            }
+        }
+        public void GhostFearMoveRUD(string ghost)
+        {
+            int i = rnd.Next(1, 4);
+
+            switch (ghost)
+            {
+                case "ghostRed":
+
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostRedDirection != Directions.Left)
+                            {
+                                Settings.GhostRedDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostRed");
+                            }
+                            break;
+
+                        case 2:
+                            if (Settings.GhostRedDirection != Directions.Down)
+                            {
+                                Settings.GhostRedDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostRed");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostRedDirection != Directions.Up)
+                            {
+                                Settings.GhostRedDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostRed");
+                            }
+                            break;
+                    }
+                    redMoveRUD = false;
+                    break;
+
+                case "ghostPink":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostPinkDirection != Directions.Left)
+                            {
+                                Settings.GhostPinkDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostPink");
+                            }
+                            break;
+
+                        case 2:
+                            if (Settings.GhostPinkDirection != Directions.Down)
+                            {
+                                Settings.GhostPinkDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostPink");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostPinkDirection != Directions.Up)
+                            {
+                                Settings.GhostPinkDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostPink");
+                            }
+                            break;
+                    }
+                    pinkMoveRUD = false;
+                    break;
+
+                case "ghostOrange":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostOrangeDirection != Directions.Down)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostOrange");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostOrangeDirection != Directions.Left)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostOrange");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostOrangeDirection != Directions.Up)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostOrange");
+                            }
+                            break;
+                    }
+                    orangeMoveRUD = false;
+                    break;
+
+                case "ghostBlue":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostBlueDirection != Directions.Down)
+                            {
+                                Settings.GhostBlueDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostBlue");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostBlueDirection != Directions.Left)
+                            {
+                                Settings.GhostBlueDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostBlue");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostBlueDirection != Directions.Up)
+                            {
+                                Settings.GhostBlueDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveRUD("ghostBlue");
+                            }
+                            break;
+                    }
+                    blueMoveRUD = false;
+                    break;
+            }
+        }
+        public void GhostFearMoveLUD(string ghost)
+        {
+            int i = rnd.Next(1, 4);
+
+            switch (ghost)
+            {
+                case "ghostRed":
+
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostRedDirection != Directions.Right)
+                            {
+                                Settings.GhostRedDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostRed");
+                            }
+                            break;
+
+                        case 2:
+                            if (Settings.GhostRedDirection != Directions.Down)
+                            {
+                                Settings.GhostRedDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostRed");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostRedDirection != Directions.Up)
+                            {
+                                Settings.GhostRedDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostRed");
+                            }
+                            break;
+                    }
+                    redMoveLUD = false;
+                    break;
+
+                case "ghostPink":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostPinkDirection != Directions.Right)
+                            {
+                                Settings.GhostPinkDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostPink");
+                            }
+                            break;
+
+                        case 2:
+                            if (Settings.GhostPinkDirection != Directions.Down)
+                            {
+                                Settings.GhostPinkDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostPink");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostPinkDirection != Directions.Up)
+                            {
+                                Settings.GhostPinkDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostPink");
+                            }
+                            break;
+                    }
+                    pinkMoveLUD = false;
+                    break;
+
+                case "ghostOrange":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostOrangeDirection != Directions.Down)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostOrange");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostOrangeDirection != Directions.Right)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostOrange");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostOrangeDirection != Directions.Up)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostOrange");
+                            }
+                            break;
+                    }
+                    orangeMoveLUD = false;
+                    break;
+
+                case "ghostBlue":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostBlueDirection != Directions.Down)
+                            {
+                                Settings.GhostBlueDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostBlue");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostBlueDirection != Directions.Right)
+                            {
+                                Settings.GhostBlueDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostBlue");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostBlueDirection != Directions.Up)
+                            {
+                                Settings.GhostBlueDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLUD("ghostBlue");
+                            }
+                            break;
+                    }
+                    blueMoveLUD = false;
+                    break;
+            }
+        }
+        public void GhostFearMoveLRUD(string ghost)
+        {
+            int i = rnd.Next(1, 5);
+
+            switch (ghost)
+            {
+                case "ghostRed":
+
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostRedDirection != Directions.Right)
+                            {
+                                Settings.GhostRedDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostRed");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostRedDirection != Directions.Down)
+                            {
+                                Settings.GhostRedDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostRed");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostRedDirection != Directions.Up)
+                            {
+                                Settings.GhostRedDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostRed");
+                            }
+                            break;
+                        case 4:
+                            if (Settings.GhostRedDirection != Directions.Left)
+                            {
+                                Settings.GhostRedDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostRed");
+                            }
+                            break;
+                    }
+                    redMoveLRUD = false;
+                    break;
+
+                case "ghostPink":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostPinkDirection != Directions.Right)
+                            {
+                                Settings.GhostPinkDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostPink");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostPinkDirection != Directions.Down)
+                            {
+                                Settings.GhostPinkDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostPink");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostPinkDirection != Directions.Up)
+                            {
+                                Settings.GhostPinkDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostPink");
+                            }
+                            break;
+                        case 4:
+                            if (Settings.GhostPinkDirection != Directions.Left)
+                            {
+                                Settings.GhostPinkDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostPink");
+                            }
+                            break;
+                    }
+                    pinkMoveLRUD = false;
+                    break;
+
+                case "ghostOrange":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostOrangeDirection != Directions.Right)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostOrange");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostOrangeDirection != Directions.Down)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostOrange");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostOrangeDirection != Directions.Up)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostOrange");
+                            }
+                            break;
+                        case 4:
+                            if (Settings.GhostOrangeDirection != Directions.Left)
+                            {
+                                Settings.GhostOrangeDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostOrange");
+                            }
+                            break;
+                    }
+                    orangeMoveLRUD = false;
+                    break;
+
+                case "ghostBlue":
+                    switch (i)
+                    {
+                        case 1:
+                            if (Settings.GhostBlueDirection != Directions.Right)
+                            {
+                                Settings.GhostBlueDirection = Directions.Left;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostBlue");
+                            }
+                            break;
+                        case 2:
+                            if (Settings.GhostBlueDirection != Directions.Down)
+                            {
+                                Settings.GhostBlueDirection = Directions.Up;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostBlue");
+                            }
+                            break;
+                        case 3:
+                            if (Settings.GhostBlueDirection != Directions.Up)
+                            {
+                                Settings.GhostBlueDirection = Directions.Down;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostBlue");
+                            }
+                            break;
+                        case 4:
+                            if (Settings.GhostBlueDirection != Directions.Left)
+                            {
+                                Settings.GhostBlueDirection = Directions.Right;
+                            }
+                            else
+                            {
+                                GhostFearMoveLRUD("ghostBlue");
+                            }
+                            break;
+                    }
+                    blueMoveLRUD = false;
+                    break;
+            }
+        }
 
         #endregion
+
 
 
     }

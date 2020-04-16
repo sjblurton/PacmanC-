@@ -38,6 +38,8 @@
             this.pbGhostPink = new System.Windows.Forms.PictureBox();
             this.pbGhostBlue = new System.Windows.Forms.PictureBox();
             this.pbGhostOrange = new System.Windows.Forms.PictureBox();
+            this.frightenedTimer = new System.Windows.Forms.Timer(this.components);
+            this.warningTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGhostPink)).BeginInit();
@@ -49,7 +51,7 @@
             // 
             this.player.BackColor = System.Drawing.Color.Transparent;
             this.player.Image = ((System.Drawing.Image)(resources.GetObject("player.Image")));
-            this.player.Location = new System.Drawing.Point(226, 376);
+            this.player.Location = new System.Drawing.Point(224, 376);
             this.player.Name = "player";
             this.player.Size = new System.Drawing.Size(22, 22);
             this.player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -59,7 +61,7 @@
             // findPlayerEngineTimer
             // 
             this.findPlayerEngineTimer.Enabled = true;
-            this.findPlayerEngineTimer.Interval = 75;
+            this.findPlayerEngineTimer.Interval = 150;
             this.findPlayerEngineTimer.Tick += new System.EventHandler(this.gameEngineTimer_Tick);
             // 
             // lbScore
@@ -77,48 +79,62 @@
             // pbGhostRed
             // 
             this.pbGhostRed.Image = global::Pacman.Properties.Resources.GRD;
-            this.pbGhostRed.Location = new System.Drawing.Point(240, 230);
+            this.pbGhostRed.Location = new System.Drawing.Point(240, 228);
             this.pbGhostRed.Name = "pbGhostRed";
             this.pbGhostRed.Size = new System.Drawing.Size(18, 20);
             this.pbGhostRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbGhostRed.TabIndex = 2;
             this.pbGhostRed.TabStop = false;
+            this.pbGhostRed.Tag = "ghost";
             // 
             // ghostTimer
             // 
             this.ghostTimer.Enabled = true;
-            this.ghostTimer.Interval = 75;
+            this.ghostTimer.Interval = 150;
             this.ghostTimer.Tick += new System.EventHandler(this.ghostTimer_Tick);
             // 
             // pbGhostPink
             // 
             this.pbGhostPink.Image = global::Pacman.Properties.Resources.GPD;
-            this.pbGhostPink.Location = new System.Drawing.Point(214, 230);
+            this.pbGhostPink.Location = new System.Drawing.Point(212, 228);
             this.pbGhostPink.Name = "pbGhostPink";
             this.pbGhostPink.Size = new System.Drawing.Size(18, 20);
             this.pbGhostPink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbGhostPink.TabIndex = 3;
             this.pbGhostPink.TabStop = false;
+            this.pbGhostPink.Tag = "ghost";
             // 
             // pbGhostBlue
             // 
             this.pbGhostBlue.Image = global::Pacman.Properties.Resources.GBD;
-            this.pbGhostBlue.Location = new System.Drawing.Point(264, 230);
+            this.pbGhostBlue.Location = new System.Drawing.Point(264, 228);
             this.pbGhostBlue.Name = "pbGhostBlue";
             this.pbGhostBlue.Size = new System.Drawing.Size(18, 20);
             this.pbGhostBlue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbGhostBlue.TabIndex = 4;
             this.pbGhostBlue.TabStop = false;
+            this.pbGhostBlue.Tag = "ghost";
             // 
             // pbGhostOrange
             // 
             this.pbGhostOrange.Image = global::Pacman.Properties.Resources.GOD;
-            this.pbGhostOrange.Location = new System.Drawing.Point(190, 230);
+            this.pbGhostOrange.Location = new System.Drawing.Point(188, 228);
             this.pbGhostOrange.Name = "pbGhostOrange";
             this.pbGhostOrange.Size = new System.Drawing.Size(18, 20);
             this.pbGhostOrange.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbGhostOrange.TabIndex = 5;
             this.pbGhostOrange.TabStop = false;
+            this.pbGhostOrange.Tag = "ghost";
+            // 
+            // frightenedTimer
+            // 
+            this.frightenedTimer.Interval = 10000;
+            this.frightenedTimer.Tick += new System.EventHandler(this.frightenedTimer_Tick);
+            // 
+            // warningTimer
+            // 
+            this.warningTimer.Interval = 4000;
+            this.warningTimer.Tick += new System.EventHandler(this.warningTimer_Tick);
             // 
             // Form1
             // 
@@ -161,6 +177,8 @@
         private System.Windows.Forms.PictureBox pbGhostPink;
         private System.Windows.Forms.PictureBox pbGhostBlue;
         private System.Windows.Forms.PictureBox pbGhostOrange;
+        private System.Windows.Forms.Timer frightenedTimer;
+        private System.Windows.Forms.Timer warningTimer;
     }
 }
 
